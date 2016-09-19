@@ -71,39 +71,39 @@ $(document).ready(function(e) {
 });
 /*腾讯视频嵌入开始*/
 
-video = new tvp.VideoInfo();
-video.setVid("g0018a38dar");
-player = new tvp.Player();
-player.create({
-    width:"100%",
-    height:"100%",
-    video:video,
-    modId:"WxMomentVideo",
-    //controls:1,
-    playerid:"videoid",
-    autoplay:false,
-    //pic:"images/vedio_img.jpg",
-    isHtml5UseUI:true,
-    isHtml5ControlAlwaysShow:false,
-    html5LiveUIFeature: false,
-    isHtml5UseFakeFullScreen: false,
-    isiPhoneShowPlaysinline: true,
-    vodFlashExtVars: {
-        share: 0, follow: 0, showlogo: 0, clientbar: 0
-    },
-    plugins: {
-        AppBanner: 0,
-        AppRecommend: 0
-    }
-});
-player.onallended=function(){
-    console.log("onallended");
-}
-player.onplaying=function(vid){
-    console.log("onplaying");
-}
-
-/*腾讯视频嵌入结束*/
+//video = new tvp.VideoInfo();
+//video.setVid("g0018a38dar");
+//player = new tvp.Player();
+//player.create({
+//    width:"100%",
+//    height:"100%",
+//    video:video,
+//    modId:"WxMomentVideo",
+//    //controls:1,
+//    playerid:"videoid",
+//    autoplay:false,
+//    //pic:"images/vedio_img.jpg",
+//    isHtml5UseUI:true,
+//    isHtml5ControlAlwaysShow:false,
+//    html5LiveUIFeature: false,
+//    isHtml5UseFakeFullScreen: false,
+//    isiPhoneShowPlaysinline: true,
+//    vodFlashExtVars: {
+//        share: 0, follow: 0, showlogo: 0, clientbar: 0
+//    },
+//    plugins: {
+//        AppBanner: 0,
+//        AppRecommend: 0
+//    }
+//});
+//player.onallended=function(){
+//    console.log("onallended");
+//}
+//player.onplaying=function(vid){
+//    console.log("onplaying");
+//}
+//
+///*腾讯视频嵌入结束*/
 
 
 $(".loading,.pages,.unlock_page,.result_page").bind("touchstart",function(){
