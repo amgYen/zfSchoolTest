@@ -606,14 +606,7 @@ function weichat(){
     setTimeout(function(){
         weixinShow();
     },1500);
-    $(".download_btn").bind("touchstart",function(){
-        wa.sendEvent('click', 'agree07');
-        if (/android/i.test(navigator.userAgent)){
-            document.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.hs.yjseller&ckey=CK1295447070228";
-        }else if (/ipad|iphone|mac/i.test(navigator.userAgent)){
-            document.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.hs.yjseller&ckey=CK1295447070228";
-        }
-    })
+
 
 }
 function callBottom(){
@@ -644,7 +637,6 @@ function resultAnimate(){
     $("#cube").show();
     window.setTimeout(function(){
         cube.init();
-        details.init();
     },200)
 
 
@@ -657,7 +649,6 @@ var $cubeShareMark = $('#cubeShareMark');
 
 var $details = $('#details');
 var $detailsList = $('#detailsList');
-var $detailsBtn = $('#detailsBtn');
 var $detailsReturn = $('#detailsReturn');
 
 var cube = (function(){
@@ -710,8 +701,9 @@ var cube = (function(){
 
         $li.on('touchend',function(){
             if(bBtn){  //点击
-                //alert( $(this).index() );
-                details.show( $(this).index() );
+                $cube.hide();
+                $details.show();
+                details.init( $(this).index() );
             }
             else{  //拖拽
                 startX += x;
@@ -719,9 +711,7 @@ var cube = (function(){
             }
         });
 
-        $cubeShare.on('touchstart',function(){
-            $cubeShareMark.show();
-        });
+
         $cubeShareMark.on('touchstart',function(){
             $(this).hide();
         });
@@ -732,67 +722,36 @@ var cube = (function(){
 })();
 
 
-var details = (function(){
-
-    var $li1 = $detailsList.find('li');
-    var $li2 = $detailsBtn.find('li');
-    var iNow = 0;
+var details = (function(index){
     var $detailsImg = $detailsList.find('.detailsImg');
 
-    function init(){
-        bind();
-    }
-    function bind(){
-        var downX = 0;
-        var nowIndex = 0;
-        var nextorprevIndex = 0;
-
-        $li1.on('touchstart',function(ev){
-            var touch = ev.originalEvent.changedTouches[0];
-            downX = touch.pageX;
-            nowIndex = $(this).index();
-            $li1.on('touchend',function(ev){
-                var touch = ev.originalEvent.changedTouches[0];
-                if( touch.pageX < downX ){  //←
-                    nextorprevIndex = nowIndex == $li1.length-1 ? 0 : nowIndex + 1;
-                    $(this).attr('class','leftHide');
-                    $li1.eq(nextorprevIndex).attr('class','rightShow');
-                }
-                else if( touch.pageX > downX ){ //→
-                    nextorprevIndex = nowIndex == 0 ? $li1.length-1 : nowIndex - 1;
-                    $(this).attr('class','rightHide');
-                    $li1.eq(nextorprevIndex).attr('class','leftShow');
-
-                }
-                $li2.eq(nextorprevIndex).attr('class','active').siblings().attr('class','');
-                $li1.off('touchend');
-                iNow = nextorprevIndex;
-                bindCanvas(nextorprevIndex);
-            });
-        });
-
-        $detailsReturn.on('touchstart',function(){
-            hide(iNow);
-        });
-    }
-    function show(index){
-        $cube.hide();
-        $details.show();
-        $li1.eq(index).attr('class','fadeIn');
-        $li2.eq(index).attr('class','active');
-        iNow = index;
+    function init(index){
+        bind(index);
         bindCanvas(index);
-    }
-    function hide(index){
-        $cube.show();
-        $li1.eq(index).attr('class','fadeOut');
-        $li1.eq(index).one('animationEnd webkitAnimationEnd',function(){
+        $detailsReturn.on('touchstart',function(){
+            $cube.show();
             $details.hide();
-            $li1.attr('class','');
-            $li2.attr('class','');
-        });
+		});
     }
+    function bind(index){
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'horizontal',
+            initialSlide:index,
+            effect:"coverflow",
+            pagination: '.swiper-pagination',
+            onSlideChangeStart:function(swiper){
+                var curIn = swiper.activeIndex;
+                bindCanvas(curIn);
+            }
+        })
+    }
+
     function bindCanvas(index){
+        [].forEach.call($detailsImg,function(item){
+            var img = item.getElementsByTagName("img")[0];
+            img.style.opacity = 0;
+        })
+
         var $img = $detailsImg.eq(index).find('img');
         var oC = $detailsImg.eq(index).find('canvas').get(0);
         var oGC = oC.getContext('2d');
@@ -871,10 +830,12 @@ var details = (function(){
         }
     }
     return {
-        init : init,
-        show : show
+        init : init
     };
 })();
+
+
+
 
 
 //淡入

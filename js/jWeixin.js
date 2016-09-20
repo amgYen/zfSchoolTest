@@ -1,1 +1,971 @@
-!function(a,b){"function"==typeof define&&(define.amd||define.cmd)?define(function(){return b(a)}):b(a,!0)}(this,function(a,b){function c(b,c,d){a.WeixinJSBridge?WeixinJSBridge.invoke(b,e(c),function(a){g(b,a,d)}):j(b,d)}function d(b,c,d){a.WeixinJSBridge?WeixinJSBridge.on(b,function(a){d&&d.trigger&&d.trigger(a),g(b,a,c)}):d?j(b,d):j(b,c)}function e(a){return a=a||{},a.appId=E.appId,a.verifyAppId=E.appId,a.verifySignType="sha1",a.verifyTimestamp=E.timestamp+"",a.verifyNonceStr=E.nonceStr,a.verifySignature=E.signature,a}function f(a){return{timeStamp:a.timestamp+"",nonceStr:a.nonceStr,"package":a.package,paySign:a.paySign,signType:a.signType||"SHA1"}}function g(a,b,c){var d,e,f;switch(delete b.err_code,delete b.err_desc,delete b.err_detail,d=b.errMsg,d||(d=b.err_msg,delete b.err_msg,d=h(a,d),b.errMsg=d),c=c||{},c._complete&&(c._complete(b),delete c._complete),d=b.errMsg||"",E.debug&&!c.isInnerInvoke&&alert(JSON.stringify(b)),e=d.indexOf(":"),f=d.substring(e+1)){case"ok":c.success&&c.success(b);break;case"cancel":c.cancel&&c.cancel(b);break;default:c.fail&&c.fail(b)}c.complete&&c.complete(b)}function h(a,b){var e,f,c=a,d=p[c];return d&&(c=d),e="ok",b&&(f=b.indexOf(":"),e=b.substring(f+1),"confirm"==e&&(e="ok"),"failed"==e&&(e="fail"),-1!=e.indexOf("failed_")&&(e=e.substring(7)),-1!=e.indexOf("fail_")&&(e=e.substring(5)),e=e.replace(/_/g," "),e=e.toLowerCase(),("access denied"==e||"no permission to execute"==e)&&(e="permission denied"),"config"==c&&"function not exist"==e&&(e="ok"),""==e&&(e="fail")),b=c+":"+e}function i(a){var b,c,d,e;if(a){for(b=0,c=a.length;c>b;++b)d=a[b],e=o[d],e&&(a[b]=e);return a}}function j(a,b){if(!(!E.debug||b&&b.isInnerInvoke)){var c=p[a];c&&(a=c),b&&b._complete&&delete b._complete,console.log('"'+a+'",',b||"")}}function k(){0!=D.preVerifyState&&(u||v||E.debug||"6.0.2">z||D.systemType<0||A||(A=!0,D.appId=E.appId,D.initTime=C.initEndTime-C.initStartTime,D.preVerifyTime=C.preVerifyEndTime-C.preVerifyStartTime,H.getNetworkType({isInnerInvoke:!0,success:function(a){var b,c;D.networkType=a.networkType,b="http://open.weixin.qq.com/sdk/report?v="+D.version+"&o="+D.preVerifyState+"&s="+D.systemType+"&c="+D.clientVersion+"&a="+D.appId+"&n="+D.networkType+"&i="+D.initTime+"&p="+D.preVerifyTime+"&u="+D.url,c=new Image,c.src=b}})))}function l(){return(new Date).getTime()}function m(b){w&&(a.WeixinJSBridge?b():q.addEventListener&&q.addEventListener("WeixinJSBridgeReady",b,!1))}function n(){H.invoke||(H.invoke=function(b,c,d){a.WeixinJSBridge&&WeixinJSBridge.invoke(b,e(c),d)},H.on=function(b,c){a.WeixinJSBridge&&WeixinJSBridge.on(b,c)})}var o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H;if(!a.jWeixin)return o={config:"preVerifyJSAPI",onMenuShareTimeline:"menu:share:timeline",onMenuShareAppMessage:"menu:share:appmessage",onMenuShareQQ:"menu:share:qq",onMenuShareWeibo:"menu:share:weiboApp",onMenuShareQZone:"menu:share:QZone",previewImage:"imagePreview",getLocation:"geoLocation",openProductSpecificView:"openProductViewWithPid",addCard:"batchAddCard",openCard:"batchViewCard",chooseWXPay:"getBrandWCPayRequest"},p=function(){var b,a={};for(b in o)a[o[b]]=b;return a}(),q=a.document,r=q.title,s=navigator.userAgent.toLowerCase(),t=navigator.platform.toLowerCase(),u=!(!t.match("mac")&&!t.match("win")),v=-1!=s.indexOf("wxdebugger"),w=-1!=s.indexOf("micromessenger"),x=-1!=s.indexOf("android"),y=-1!=s.indexOf("iphone")||-1!=s.indexOf("ipad"),z=function(){var a=s.match(/micromessenger\/(\d+\.\d+\.\d+)/)||s.match(/micromessenger\/(\d+\.\d+)/);return a?a[1]:""}(),A=!1,B=!1,C={initStartTime:l(),initEndTime:0,preVerifyStartTime:0,preVerifyEndTime:0},D={version:1,appId:"",initTime:0,preVerifyTime:0,networkType:"",preVerifyState:1,systemType:y?1:x?2:-1,clientVersion:z,url:encodeURIComponent(location.href)},E={},F={_completes:[]},G={state:0,data:{}},m(function(){C.initEndTime=l()}),H={config:function(a){E=a,j("config",a);var b=E.check===!1?!1:!0;m(function(){var a,d,e;if(b)c(o.config,{verifyJsApiList:i(E.jsApiList)},function(){F._complete=function(a){C.preVerifyEndTime=l(),G.state=1,G.data=a},F.success=function(){D.preVerifyState=0},F.fail=function(a){F._fail?F._fail(a):G.state=-1};var a=F._completes;return a.push(function(){k()}),F.complete=function(){for(var c=0,d=a.length;d>c;++c)a[c]();F._completes=[]},F}()),C.preVerifyStartTime=l();else{for(G.state=1,a=F._completes,d=0,e=a.length;e>d;++d)a[d]();F._completes=[]}}),E.beta&&n()},ready:function(a){0!=G.state?a():(F._completes.push(a),!w&&E.debug&&a())},error:function(a){"6.0.2">z||B||(B=!0,-1==G.state?a(G.data):F._fail=a)},checkJsApi:function(a){var b=function(a){var c,d,b=a.checkResult;for(c in b)d=p[c],d&&(b[d]=b[c],delete b[c]);return a};c("checkJsApi",{jsApiList:i(a.jsApiList)},function(){return a._complete=function(a){if(x){var c=a.checkResult;c&&(a.checkResult=JSON.parse(c))}a=b(a)},a}())},onMenuShareTimeline:function(a){d(o.onMenuShareTimeline,{complete:function(){c("shareTimeline",{title:a.title||r,desc:a.title||r,img_url:a.imgUrl||"",link:a.link||location.href,type:a.type||"link",data_url:a.dataUrl||""},a)}},a)},onMenuShareAppMessage:function(a){d(o.onMenuShareAppMessage,{complete:function(){c("sendAppMessage",{title:a.title||r,desc:a.desc||"",link:a.link||location.href,img_url:a.imgUrl||"",type:a.type||"link",data_url:a.dataUrl||""},a)}},a)},onMenuShareQQ:function(a){d(o.onMenuShareQQ,{complete:function(){c("shareQQ",{title:a.title||r,desc:a.desc||"",img_url:a.imgUrl||"",link:a.link||location.href},a)}},a)},onMenuShareWeibo:function(a){d(o.onMenuShareWeibo,{complete:function(){c("shareWeiboApp",{title:a.title||r,desc:a.desc||"",img_url:a.imgUrl||"",link:a.link||location.href},a)}},a)},onMenuShareQZone:function(a){d(o.onMenuShareQZone,{complete:function(){c("shareQZone",{title:a.title||r,desc:a.desc||"",img_url:a.imgUrl||"",link:a.link||location.href},a)}},a)},startRecord:function(a){c("startRecord",{},a)},stopRecord:function(a){c("stopRecord",{},a)},onVoiceRecordEnd:function(a){d("onVoiceRecordEnd",a)},playVoice:function(a){c("playVoice",{localId:a.localId},a)},pauseVoice:function(a){c("pauseVoice",{localId:a.localId},a)},stopVoice:function(a){c("stopVoice",{localId:a.localId},a)},onVoicePlayEnd:function(a){d("onVoicePlayEnd",a)},uploadVoice:function(a){c("uploadVoice",{localId:a.localId,isShowProgressTips:0==a.isShowProgressTips?0:1},a)},downloadVoice:function(a){c("downloadVoice",{serverId:a.serverId,isShowProgressTips:0==a.isShowProgressTips?0:1},a)},translateVoice:function(a){c("translateVoice",{localId:a.localId,isShowProgressTips:0==a.isShowProgressTips?0:1},a)},chooseImage:function(a){c("chooseImage",{scene:"1|2",count:a.count||9,sizeType:a.sizeType||["original","compressed"],sourceType:a.sourceType||["album","camera"]},function(){return a._complete=function(a){if(x){var b=a.localIds;b&&(a.localIds=JSON.parse(b))}},a}())},previewImage:function(a){c(o.previewImage,{current:a.current,urls:a.urls},a)},uploadImage:function(a){c("uploadImage",{localId:a.localId,isShowProgressTips:0==a.isShowProgressTips?0:1},a)},downloadImage:function(a){c("downloadImage",{serverId:a.serverId,isShowProgressTips:0==a.isShowProgressTips?0:1},a)},getNetworkType:function(a){var b=function(a){var c,d,e,b=a.errMsg;if(a.errMsg="getNetworkType:ok",c=a.subtype,delete a.subtype,c)a.networkType=c;else switch(d=b.indexOf(":"),e=b.substring(d+1)){case"wifi":case"edge":case"wwan":a.networkType=e;break;default:a.errMsg="getNetworkType:fail"}return a};c("getNetworkType",{},function(){return a._complete=function(a){a=b(a)},a}())},openLocation:function(a){c("openLocation",{latitude:a.latitude,longitude:a.longitude,name:a.name||"",address:a.address||"",scale:a.scale||28,infoUrl:a.infoUrl||""},a)},getLocation:function(a){a=a||{},c(o.getLocation,{type:a.type||"wgs84"},function(){return a._complete=function(a){delete a.type},a}())},hideOptionMenu:function(a){c("hideOptionMenu",{},a)},showOptionMenu:function(a){c("showOptionMenu",{},a)},closeWindow:function(a){a=a||{},c("closeWindow",{},a)},hideMenuItems:function(a){c("hideMenuItems",{menuList:a.menuList},a)},showMenuItems:function(a){c("showMenuItems",{menuList:a.menuList},a)},hideAllNonBaseMenuItem:function(a){c("hideAllNonBaseMenuItem",{},a)},showAllNonBaseMenuItem:function(a){c("showAllNonBaseMenuItem",{},a)},scanQRCode:function(a){a=a||{},c("scanQRCode",{needResult:a.needResult||0,scanType:a.scanType||["qrCode","barCode"]},function(){return a._complete=function(a){var b,c;y&&(b=a.resultStr,b&&(c=JSON.parse(b),a.resultStr=c&&c.scan_code&&c.scan_code.scan_result))},a}())},openProductSpecificView:function(a){c(o.openProductSpecificView,{pid:a.productId,view_type:a.viewType||0,ext_info:a.extInfo},a)},addCard:function(a){var e,f,g,h,b=a.cardList,d=[];for(e=0,f=b.length;f>e;++e)g=b[e],h={card_id:g.cardId,card_ext:g.cardExt},d.push(h);c(o.addCard,{card_list:d},function(){return a._complete=function(a){var c,d,e,b=a.card_list;if(b){for(b=JSON.parse(b),c=0,d=b.length;d>c;++c)e=b[c],e.cardId=e.card_id,e.cardExt=e.card_ext,e.isSuccess=e.is_succ?!0:!1,delete e.card_id,delete e.card_ext,delete e.is_succ;a.cardList=b,delete a.card_list}},a}())},chooseCard:function(a){c("chooseCard",{app_id:E.appId,location_id:a.shopId||"",sign_type:a.signType||"SHA1",card_id:a.cardId||"",card_type:a.cardType||"",card_sign:a.cardSign,time_stamp:a.timestamp+"",nonce_str:a.nonceStr},function(){return a._complete=function(a){a.cardList=a.choose_card_info,delete a.choose_card_info},a}())},openCard:function(a){var e,f,g,h,b=a.cardList,d=[];for(e=0,f=b.length;f>e;++e)g=b[e],h={card_id:g.cardId,code:g.code},d.push(h);c(o.openCard,{card_list:d},a)},chooseWXPay:function(a){c(o.chooseWXPay,f(a),a)}},b&&(a.wx=a.jWeixin=H),H});
+!function(element, proceed) {
+    if ("function" == typeof define && (define.amd || define.cmd)) {
+        define(function() {
+            return proceed(element);
+        });
+    } else {
+        proceed(element, true);
+    }
+}(this, function(req, dataAndEvents) {
+    /**
+     * @param {string} value
+     * @param {?} opt_attributes
+     * @param {Object} model
+     * @return {undefined}
+     */
+    function callback(value, opt_attributes, model) {
+        if (req.WeixinJSBridge) {
+            WeixinJSBridge.invoke(value, postMessage(opt_attributes), function(resp) {
+                success(value, resp, model);
+            });
+        } else {
+            extend(value, model);
+        }
+    }
+    /**
+     * @param {string} name
+     * @param {string} opt_attributes
+     * @param {Object} options
+     * @return {undefined}
+     */
+    function ajax(name, opt_attributes, options) {
+        if (req.WeixinJSBridge) {
+            WeixinJSBridge.on(name, function(a) {
+                if (options) {
+                    if (options.trigger) {
+                        options.trigger(a);
+                    }
+                }
+                success(name, a, opt_attributes);
+            });
+        } else {
+            if (options) {
+                extend(name, options);
+            } else {
+                extend(name, opt_attributes);
+            }
+        }
+    }
+    /**
+     * @param {Object} data
+     * @return {?}
+     */
+    function postMessage(data) {
+        return data = data || {}, data.appId = options.appId, data.verifyAppId = options.appId, data.verifySignType = "sha1", data.verifyTimestamp = options.timestamp + "", data.verifyNonceStr = options.nonceStr, data.verifySignature = options.signature, data;
+    }
+    /**
+     * @param {Object} options
+     * @return {?}
+     */
+    function destroy(options) {
+        return{
+            timeStamp : options.timestamp + "",
+            nonceStr : options.nonceStr,
+            "package" : options.package,
+            paySign : options.paySign,
+            signType : options.signType || "SHA1"
+        };
+    }
+    /**
+     * @param {string} name
+     * @param {Event} data
+     * @param {Object} result
+     * @return {undefined}
+     */
+    function success(name, data, result) {
+        var key;
+        var beginBracket;
+        var f;
+        switch(delete data.err_code, delete data.err_desc, delete data.err_detail, key = data.errMsg, key || (key = data.err_msg, delete data.err_msg, key = next(name, key), data.errMsg = key), result = result || {}, result._complete && (result._complete(data), delete result._complete), key = data.errMsg || "", options.debug && (!result.isInnerInvoke && alert(JSON.stringify(data))), beginBracket = key.indexOf(":"), f = key.substring(beginBracket + 1)) {
+            case "ok":
+                if (result.success) {
+                    result.success(data);
+                }
+                break;
+            case "cancel":
+                if (result.cancel) {
+                    result.cancel(data);
+                }
+                break;
+            default:
+                if (result.fail) {
+                    result.fail(data);
+                }
+                ;
+        }
+        if (result.complete) {
+            result.complete(data);
+        }
+    }
+    /**
+     * @param {string} name
+     * @param {string} event
+     * @return {?}
+     */
+    function next(name, event) {
+        var key;
+        var pos;
+        /** @type {string} */
+        var namespace = name;
+        var ns = cache[namespace];
+        return ns && (namespace = ns), key = "ok", event && (pos = event.indexOf(":"), key = event.substring(pos + 1), "confirm" == key && (key = "ok"), "failed" == key && (key = "fail"), -1 != key.indexOf("failed_") && (key = key.substring(7)), -1 != key.indexOf("fail_") && (key = key.substring(5)), key = key.replace(/_/g, " "), key = key.toLowerCase(), ("access denied" == key || "no permission to execute" == key) && (key = "permission denied"), "config" == namespace && ("function not exist" == key &&
+        (key = "ok")), "" == key && (key = "fail")), event = namespace + ":" + key;
+    }
+    /**
+     * @param {Array} results
+     * @return {?}
+     */
+    function unique(results) {
+        var i;
+        var l;
+        var id;
+        var value;
+        if (results) {
+            /** @type {number} */
+            i = 0;
+            l = results.length;
+            for (;l > i;++i) {
+                id = results[i];
+                value = module[id];
+                if (value) {
+                    results[i] = value;
+                }
+            }
+            return results;
+        }
+    }
+    /**
+     * @param {string} b
+     * @param {string} id
+     * @return {undefined}
+     */
+    function extend(b, id) {
+        if (!(!options.debug || id && id.isInnerInvoke)) {
+            var c = cache[b];
+            if (c) {
+                b = c;
+            }
+            if (id) {
+                if (id._complete) {
+                    delete id._complete;
+                }
+            }
+            console.log('"' + b + '",', id || "");
+        }
+    }
+    /**
+     * @return {undefined}
+     */
+    function compile() {
+        if (0 != config.preVerifyState) {
+            if (!u) {
+                if (!v) {
+                    if (!options.debug) {
+                        if (!("6.0.2" > cversion)) {
+                            if (!(config.systemType < 0)) {
+                                if (!A) {
+                                    /** @type {boolean} */
+                                    A = true;
+                                    config.appId = options.appId;
+                                    /** @type {number} */
+                                    config.initTime = fx.initEndTime - fx.initStartTime;
+                                    /** @type {number} */
+                                    config.preVerifyTime = fx.preVerifyEndTime - fx.preVerifyStartTime;
+                                    context.getNetworkType({
+                                        isInnerInvoke : true,
+                                        /**
+                                         * @param {Event} e
+                                         * @return {undefined}
+                                         */
+                                        success : function(e) {
+                                            var href;
+                                            var objNext;
+                                            config.networkType = e.networkType;
+                                            /** @type {string} */
+                                            href = "http://open.weixin.qq.com/sdk/report?v=" + config.version + "&o=" + config.preVerifyState + "&s=" + config.systemType + "&c=" + config.clientVersion + "&a=" + config.appId + "&n=" + config.networkType + "&i=" + config.initTime + "&p=" + config.preVerifyTime + "&u=" + config.url;
+                                            /** @type {Image} */
+                                            objNext = new Image;
+                                            /** @type {string} */
+                                            objNext.src = href;
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /**
+     * @return {?}
+     */
+    function now() {
+        return(new Date).getTime();
+    }
+    /**
+     * @param {Function} fn
+     * @return {undefined}
+     */
+    function init(fn) {
+        if (w) {
+            if (req.WeixinJSBridge) {
+                fn();
+            } else {
+                if (doc.addEventListener) {
+                    doc.addEventListener("WeixinJSBridgeReady", fn, false);
+                }
+            }
+        }
+    }
+    /**
+     * @return {undefined}
+     */
+    function setup() {
+        if (!context.invoke) {
+            /**
+             * @param {string} func
+             * @param {Object} obj
+             * @param {Function} thisArg
+             * @return {undefined}
+             */
+            context.invoke = function(func, obj, thisArg) {
+                if (req.WeixinJSBridge) {
+                    WeixinJSBridge.invoke(func, postMessage(obj), thisArg);
+                }
+            };
+            /**
+             * @param {string} types
+             * @param {Function} one
+             * @return {undefined}
+             */
+            context.on = function(types, one) {
+                if (req.WeixinJSBridge) {
+                    WeixinJSBridge.on(types, one);
+                }
+            };
+        }
+    }
+    var module;
+    var cache;
+    var doc;
+    var data;
+    var userAgent;
+    var ua;
+    var u;
+    var v;
+    var w;
+    var length;
+    var bulk;
+    var cversion;
+    var A;
+    var B;
+    var fx;
+    var config;
+    var options;
+    var self;
+    var result;
+    var context;
+    if (!req.jWeixin) {
+        return module = {
+            config : "preVerifyJSAPI",
+            onMenuShareTimeline : "menu:share:timeline",
+            onMenuShareAppMessage : "menu:share:appmessage",
+            onMenuShareQQ : "menu:share:qq",
+            onMenuShareWeibo : "menu:share:weiboApp",
+            onMenuShareQZone : "menu:share:QZone",
+            previewImage : "imagePreview",
+            getLocation : "geoLocation",
+            openProductSpecificView : "openProductViewWithPid",
+            addCard : "batchAddCard",
+            openCard : "batchViewCard",
+            chooseWXPay : "getBrandWCPayRequest"
+        }, cache = function() {
+            var i;
+            var _hexToByte = {};
+            for (i in module) {
+                /** @type {string} */
+                _hexToByte[module[i]] = i;
+            }
+            return _hexToByte;
+        }(), doc = req.document, data = doc.title, userAgent = navigator.userAgent.toLowerCase(), ua = navigator.platform.toLowerCase(), u = !(!ua.match("mac") && !ua.match("win")), v = -1 != userAgent.indexOf("wxdebugger"), w = -1 != userAgent.indexOf("micromessenger"), length = -1 != userAgent.indexOf("android"), bulk = -1 != userAgent.indexOf("iphone") || -1 != userAgent.indexOf("ipad"), cversion = function() {
+            var namespaceMatch = userAgent.match(/micromessenger\/(\d+\.\d+\.\d+)/) || userAgent.match(/micromessenger\/(\d+\.\d+)/);
+            return namespaceMatch ? namespaceMatch[1] : "";
+        }(), A = false, B = false, fx = {
+            initStartTime : now(),
+            initEndTime : 0,
+            preVerifyStartTime : 0,
+            preVerifyEndTime : 0
+        }, config = {
+            version : 1,
+            appId : "",
+            initTime : 0,
+            preVerifyTime : 0,
+            networkType : "",
+            preVerifyState : 1,
+            systemType : bulk ? 1 : length ? 2 : -1,
+            clientVersion : cversion,
+            url : encodeURIComponent(location.href)
+        }, options = {}, self = {
+            _completes : []
+        }, result = {
+            state : 0,
+            data : {}
+        }, init(function() {
+            fx.initEndTime = now();
+        }), context = {
+            /**
+             * @param {string} settings
+             * @return {undefined}
+             */
+            config : function(settings) {
+                /** @type {string} */
+                options = settings;
+                extend("config", settings);
+                /** @type {boolean} */
+                var b = options.check === false ? false : true;
+                init(function() {
+                    var _ref5;
+                    var argIndex;
+                    var _len2;
+                    if (b) {
+                        callback(module.config, {
+                            verifyJsApiList : unique(options.jsApiList)
+                        }, function() {
+                            /**
+                             * @param {Object} e
+                             * @return {undefined}
+                             */
+                            self._complete = function(e) {
+                                fx.preVerifyEndTime = now();
+                                /** @type {number} */
+                                result.state = 1;
+                                /** @type {Object} */
+                                result.data = e;
+                            };
+                            /**
+                             * @return {undefined}
+                             */
+                            self.success = function() {
+                                /** @type {number} */
+                                config.preVerifyState = 0;
+                            };
+                            /**
+                             * @param {Event} arg
+                             * @return {undefined}
+                             */
+                            self.fail = function(arg) {
+                                if (self._fail) {
+                                    self._fail(arg);
+                                } else {
+                                    /** @type {number} */
+                                    result.state = -1;
+                                }
+                            };
+                            var matched = self._completes;
+                            return matched.push(function() {
+                                compile();
+                            }), self.complete = function() {
+                                /** @type {number} */
+                                var name_fragment = 0;
+                                var cnl = matched.length;
+                                for (;cnl > name_fragment;++name_fragment) {
+                                    matched[name_fragment]();
+                                }
+                                /** @type {Array} */
+                                self._completes = [];
+                            }, self;
+                        }());
+                        fx.preVerifyStartTime = now();
+                    } else {
+                        /** @type {number} */
+                        result.state = 1;
+                        _ref5 = self._completes;
+                        /** @type {number} */
+                        argIndex = 0;
+                        _len2 = _ref5.length;
+                        for (;_len2 > argIndex;++argIndex) {
+                            _ref5[argIndex]();
+                        }
+                        /** @type {Array} */
+                        self._completes = [];
+                    }
+                });
+                if (options.beta) {
+                    setup();
+                }
+            },
+            /**
+             * @param {?} callback
+             * @return {undefined}
+             */
+            ready : function(callback) {
+                if (0 != result.state) {
+                    callback();
+                } else {
+                    self._completes.push(callback);
+                    if (!w) {
+                        if (options.debug) {
+                            callback();
+                        }
+                    }
+                }
+            },
+            /**
+             * @param {?} _
+             * @return {undefined}
+             */
+            error : function(_) {
+                if (!("6.0.2" > cversion)) {
+                    if (!B) {
+                        /** @type {boolean} */
+                        B = true;
+                        if (-1 == result.state) {
+                            _(result.data);
+                        } else {
+                            self._fail = _;
+                        }
+                    }
+                }
+            },
+            /**
+             * @param {?} self
+             * @return {undefined}
+             */
+            checkJsApi : function(self) {
+                /**
+                 * @param {Object} cur
+                 * @return {?}
+                 */
+                var sibling = function(cur) {
+                    var k;
+                    var name;
+                    var old = cur.checkResult;
+                    for (k in old) {
+                        name = cache[k];
+                        if (name) {
+                            old[name] = old[k];
+                            delete old[k];
+                        }
+                    }
+                    return cur;
+                };
+                callback("checkJsApi", {
+                    jsApiList : unique(self.jsApiList)
+                }, function() {
+                    return self._complete = function(item) {
+                        if (length) {
+                            var value = item.checkResult;
+                            if (value) {
+                                /** @type {*} */
+                                item.checkResult = JSON.parse(value);
+                            }
+                        }
+                        item = sibling(item);
+                    }, self;
+                }());
+            },
+            /**
+             * @param {Object} options
+             * @return {undefined}
+             */
+            onMenuShareTimeline : function(options) {
+                ajax(module.onMenuShareTimeline, {
+                    /**
+                     * @return {undefined}
+                     */
+                    complete : function() {
+                        callback("shareTimeline", {
+                            title : options.title || data,
+                            desc : options.title || data,
+                            img_url : options.imgUrl || "",
+                            link : options.link || location.href,
+                            type : options.type || "link",
+                            data_url : options.dataUrl || ""
+                        }, options);
+                    }
+                }, options);
+            },
+            /**
+             * @param {Object} options
+             * @return {undefined}
+             */
+            onMenuShareAppMessage : function(options) {
+                ajax(module.onMenuShareAppMessage, {
+                    /**
+                     * @return {undefined}
+                     */
+                    complete : function() {
+                        callback("sendAppMessage", {
+                            title : options.title || data,
+                            desc : options.desc || "",
+                            link : options.link || location.href,
+                            img_url : options.imgUrl || "",
+                            type : options.type || "link",
+                            data_url : options.dataUrl || ""
+                        }, options);
+                    }
+                }, options);
+            },
+            /**
+             * @param {Object} options
+             * @return {undefined}
+             */
+            onMenuShareQQ : function(options) {
+                ajax(module.onMenuShareQQ, {
+                    /**
+                     * @return {undefined}
+                     */
+                    complete : function() {
+                        callback("shareQQ", {
+                            title : options.title || data,
+                            desc : options.desc || "",
+                            img_url : options.imgUrl || "",
+                            link : options.link || location.href
+                        }, options);
+                    }
+                }, options);
+            },
+            /**
+             * @param {Object} options
+             * @return {undefined}
+             */
+            onMenuShareWeibo : function(options) {
+                ajax(module.onMenuShareWeibo, {
+                    /**
+                     * @return {undefined}
+                     */
+                    complete : function() {
+                        callback("shareWeiboApp", {
+                            title : options.title || data,
+                            desc : options.desc || "",
+                            img_url : options.imgUrl || "",
+                            link : options.link || location.href
+                        }, options);
+                    }
+                }, options);
+            },
+            /**
+             * @param {Object} options
+             * @return {undefined}
+             */
+            onMenuShareQZone : function(options) {
+                ajax(module.onMenuShareQZone, {
+                    /**
+                     * @return {undefined}
+                     */
+                    complete : function() {
+                        callback("shareQZone", {
+                            title : options.title || data,
+                            desc : options.desc || "",
+                            img_url : options.imgUrl || "",
+                            link : options.link || location.href
+                        }, options);
+                    }
+                }, options);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            startRecord : function(collection) {
+                callback("startRecord", {}, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            stopRecord : function(collection) {
+                callback("stopRecord", {}, collection);
+            },
+            /**
+             * @param {string} opt_attributes
+             * @return {undefined}
+             */
+            onVoiceRecordEnd : function(opt_attributes) {
+                ajax("onVoiceRecordEnd", opt_attributes);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            playVoice : function(collection) {
+                callback("playVoice", {
+                    localId : collection.localId
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            pauseVoice : function(collection) {
+                callback("pauseVoice", {
+                    localId : collection.localId
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            stopVoice : function(collection) {
+                callback("stopVoice", {
+                    localId : collection.localId
+                }, collection);
+            },
+            /**
+             * @param {string} opt_attributes
+             * @return {undefined}
+             */
+            onVoicePlayEnd : function(opt_attributes) {
+                ajax("onVoicePlayEnd", opt_attributes);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            uploadVoice : function(collection) {
+                callback("uploadVoice", {
+                    localId : collection.localId,
+                    isShowProgressTips : 0 == collection.isShowProgressTips ? 0 : 1
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            downloadVoice : function(collection) {
+                callback("downloadVoice", {
+                    serverId : collection.serverId,
+                    isShowProgressTips : 0 == collection.isShowProgressTips ? 0 : 1
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            translateVoice : function(collection) {
+                callback("translateVoice", {
+                    localId : collection.localId,
+                    isShowProgressTips : 0 == collection.isShowProgressTips ? 0 : 1
+                }, collection);
+            },
+            /**
+             * @param {Object} item
+             * @return {undefined}
+             */
+            chooseImage : function(item) {
+                callback("chooseImage", {
+                    scene : "1|2",
+                    count : item.count || 9,
+                    sizeType : item.sizeType || ["original", "compressed"],
+                    sourceType : item.sourceType || ["album", "camera"]
+                }, function() {
+                    return item._complete = function(response) {
+                        if (length) {
+                            var content = response.localIds;
+                            if (content) {
+                                /** @type {*} */
+                                response.localIds = JSON.parse(content);
+                            }
+                        }
+                    }, item;
+                }());
+            },
+            /**
+             * @param {Object} me
+             * @return {undefined}
+             */
+            previewImage : function(me) {
+                callback(module.previewImage, {
+                    current : me.current,
+                    urls : me.urls
+                }, me);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            uploadImage : function(collection) {
+                callback("uploadImage", {
+                    localId : collection.localId,
+                    isShowProgressTips : 0 == collection.isShowProgressTips ? 0 : 1
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            downloadImage : function(collection) {
+                callback("downloadImage", {
+                    serverId : collection.serverId,
+                    isShowProgressTips : 0 == collection.isShowProgressTips ? 0 : 1
+                }, collection);
+            },
+            /**
+             * @param {?} opt_attributes
+             * @return {undefined}
+             */
+            getNetworkType : function(opt_attributes) {
+                /**
+                 * @param {Object} data
+                 * @return {?}
+                 */
+                var func = function(data) {
+                    var type;
+                    var i;
+                    var k;
+                    var raw = data.errMsg;
+                    if (data.errMsg = "getNetworkType:ok", type = data.subtype, delete data.subtype, type) {
+                        data.networkType = type;
+                    } else {
+                        switch(i = raw.indexOf(":"), k = raw.substring(i + 1)) {
+                            case "wifi":
+                                ;
+                            case "edge":
+                                ;
+                            case "wwan":
+                                data.networkType = k;
+                                break;
+                            default:
+                                /** @type {string} */
+                                data.errMsg = "getNetworkType:fail";
+                        }
+                    }
+                    return data;
+                };
+                callback("getNetworkType", {}, function() {
+                    return opt_attributes._complete = function(value) {
+                        value = func(value);
+                    }, opt_attributes;
+                }());
+            },
+            /**
+             * @param {Object} self
+             * @return {undefined}
+             */
+            openLocation : function(self) {
+                callback("openLocation", {
+                    latitude : self.latitude,
+                    longitude : self.longitude,
+                    name : self.name || "",
+                    address : self.address || "",
+                    scale : self.scale || 28,
+                    infoUrl : self.infoUrl || ""
+                }, self);
+            },
+            /**
+             * @param {Object} details
+             * @return {undefined}
+             */
+            getLocation : function(details) {
+                details = details || {};
+                callback(module.getLocation, {
+                    type : details.type || "wgs84"
+                }, function() {
+                    return details._complete = function(event) {
+                        delete event.type;
+                    }, details;
+                }());
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            hideOptionMenu : function(collection) {
+                callback("hideOptionMenu", {}, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            showOptionMenu : function(collection) {
+                callback("showOptionMenu", {}, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            closeWindow : function(collection) {
+                collection = collection || {};
+                callback("closeWindow", {}, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            hideMenuItems : function(collection) {
+                callback("hideMenuItems", {
+                    menuList : collection.menuList
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            showMenuItems : function(collection) {
+                callback("showMenuItems", {
+                    menuList : collection.menuList
+                }, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            hideAllNonBaseMenuItem : function(collection) {
+                callback("hideAllNonBaseMenuItem", {}, collection);
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            showAllNonBaseMenuItem : function(collection) {
+                callback("showAllNonBaseMenuItem", {}, collection);
+            },
+            /**
+             * @param {Object} proto
+             * @return {undefined}
+             */
+            scanQRCode : function(proto) {
+                proto = proto || {};
+                callback("scanQRCode", {
+                    needResult : proto.needResult || 0,
+                    scanType : proto.scanType || ["qrCode", "barCode"]
+                }, function() {
+                    return proto._complete = function(response) {
+                        var content;
+                        var options;
+                        if (bulk) {
+                            content = response.resultStr;
+                            if (content) {
+                                /** @type {*} */
+                                options = JSON.parse(content);
+                                /** @type {*} */
+                                response.resultStr = options && (options.scan_code && options.scan_code.scan_result);
+                            }
+                        }
+                    }, proto;
+                }());
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            openProductSpecificView : function(collection) {
+                callback(module.openProductSpecificView, {
+                    pid : collection.productId,
+                    view_type : collection.viewType || 0,
+                    ext_info : collection.extInfo
+                }, collection);
+            },
+            /**
+             * @param {?} item
+             * @return {undefined}
+             */
+            addCard : function(item) {
+                var position;
+                var _len;
+                var result;
+                var vvar;
+                var children = item.cardList;
+                /** @type {Array} */
+                var assigns = [];
+                /** @type {number} */
+                position = 0;
+                _len = children.length;
+                for (;_len > position;++position) {
+                    result = children[position];
+                    vvar = {
+                        card_id : result.cardId,
+                        card_ext : result.cardExt
+                    };
+                    assigns.push(vvar);
+                }
+                callback(module.addCard, {
+                    card_list : assigns
+                }, function() {
+                    return item._complete = function(response) {
+                        var i;
+                        var l;
+                        var result;
+                        var headers = response.card_list;
+                        if (headers) {
+                            /** @type {*} */
+                            headers = JSON.parse(headers);
+                            /** @type {number} */
+                            i = 0;
+                            l = headers.length;
+                            for (;l > i;++i) {
+                                result = headers[i];
+                                result.cardId = result.card_id;
+                                result.cardExt = result.card_ext;
+                                /** @type {boolean} */
+                                result.isSuccess = result.is_succ ? true : false;
+                                delete result.card_id;
+                                delete result.card_ext;
+                                delete result.is_succ;
+                            }
+                            /** @type {*} */
+                            response.cardList = headers;
+                            delete response.card_list;
+                        }
+                    }, item;
+                }());
+            },
+            /**
+             * @param {?} data
+             * @return {undefined}
+             */
+            chooseCard : function(data) {
+                callback("chooseCard", {
+                    app_id : options.appId,
+                    location_id : data.shopId || "",
+                    sign_type : data.signType || "SHA1",
+                    card_id : data.cardId || "",
+                    card_type : data.cardType || "",
+                    card_sign : data.cardSign,
+                    time_stamp : data.timestamp + "",
+                    nonce_str : data.nonceStr
+                }, function() {
+                    return data._complete = function(response) {
+                        response.cardList = response.choose_card_info;
+                        delete response.choose_card_info;
+                    }, data;
+                }());
+            },
+            /**
+             * @param {Object} collection
+             * @return {undefined}
+             */
+            openCard : function(collection) {
+                var p;
+                var a;
+                var e;
+                var vvar;
+                var l = collection.cardList;
+                /** @type {Array} */
+                var assigns = [];
+                /** @type {number} */
+                p = 0;
+                a = l.length;
+                for (;a > p;++p) {
+                    e = l[p];
+                    vvar = {
+                        card_id : e.cardId,
+                        code : e.code
+                    };
+                    assigns.push(vvar);
+                }
+                callback(module.openCard, {
+                    card_list : assigns
+                }, collection);
+            },
+            /**
+             * @param {Object} model
+             * @return {undefined}
+             */
+            chooseWXPay : function(model) {
+                callback(module.chooseWXPay, destroy(model), model);
+            }
+        }, dataAndEvents && (req.wx = req.jWeixin = context), context;
+    }
+});
