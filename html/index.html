@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no"/>
     <meta name="wxm:timeline_title" content="珠峰培训">
     <meta name="wxm:appmessage_title" content="珠峰培训">
     <meta name="wxm:appmessage_desc" content="朋友，我们在北京等你！">
@@ -12,8 +12,9 @@
     <!--分享链接-->
     <!--<meta name="wxm:link" content="http://wximg.qq.com/wxp/moment/4kKIVVgZl/html/index.html">-->
     <title>珠峰培训</title>
-    <link rel="stylesheet" href="../css/style.css?r=29" />
+    <link rel="stylesheet" href="../css/style.css?r=29"/>
     <link rel="stylesheet" href="../css/swiper.min.css"/>
+    <link rel="stylesheet" href="../css/animate.css"/>
 </head>
 
 
@@ -23,8 +24,16 @@
     <div class="loading_icon"></div>
     <div class="loading_progress">
         <div class="lp_bg"></div>
-        <div class="lp_left"><div class="lp_left_wrap"><div class="lp_left_circle"></div></div></div>
-        <div class="lp_right"><div class="lp_right_wrap"><div class="lp_right_circle"></div></div></div>
+        <div class="lp_left">
+            <div class="lp_left_wrap">
+                <div class="lp_left_circle"></div>
+            </div>
+        </div>
+        <div class="lp_right">
+            <div class="lp_right_wrap">
+                <div class="lp_right_circle"></div>
+            </div>
+        </div>
     </div>
     <div class="loading_text">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -33,7 +42,7 @@
 </div>
 <div class="wrapper">
     <article class="pages" id="page1">
-        <img src="../img/page1_pic.jpg" width="640" />
+        <img src="../img/page1_pic.jpg" width="640"/>
         <figure class="page1_btn"></figure>
     </article>
     <article class="pages" id="page2">
@@ -48,9 +57,9 @@
         <div class="page2_video"></div>
         <div class="page2_ganrao"></div>
     </article>
-    <audio src="../img/call.mp3" preload="preload" id="call" loop ></audio>
-    <audio src="../img/wh_3s.mp3" preload="preload" id="whsay" ></audio>
-    <audio src="../img/zzs.mp3" preload="preload" id="zzs" ></audio>
+    <audio src="../img/call.mp3" preload="preload" id="call" loop></audio>
+    <audio src="../img/wh_3s.mp3" preload="preload" id="whsay"></audio>
+    <audio src="../img/zzs.mp3" preload="preload" id="zzs"></audio>
     <article class="unlock_page">
         <div class="unlock_info">
             <div class="weixin_wrap"></div>
@@ -62,7 +71,9 @@
             <div class="unlock_date">
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
-            <div class="unlock_tips_wrap"><div class="unlock_tips"></div></div>
+            <div class="unlock_tips_wrap">
+                <div class="unlock_tips"></div>
+            </div>
             <div class="unlock_bar"></div>
         </div>
     </article>
@@ -70,20 +81,46 @@
         <div class="wx_wrap">
             <div class="wx_box">
                 <div class="wx_msg">
-                    <section class="wh_msg_1"> <div class="wh_headimg"></div><div class="wh_msg_item_1"></div></section>
-                    <section class="wh_msg_2"><div class="wh_headimg"></div><div class="wh_msg_item_2"></div></section>
-                    <section class="wh_msg_3"><div class="wh_headimg"></div><div class="wh_msg_item_3"></div></section>
-                    <section class="user_msg_1"><div class="user_headimg"></div><div class="user_msg_item_1"></div></section>
-                    <section class="wh_msg_4"><div class="wh_headimg"></div><div class="wh_msg_item_4"></div></section>
-                    <section class="wh_msg_5"><div class="wh_headimg"></div><div class="wh_msg_item_5"></div><div id="WxMomentVideo" class="video_con"></div></section>
-                    <section class="user_msg_2"><div class="user_headimg"></div><div class="user_msg_item_2"></div></section>
-                    <section class="wh_msg_6"><div class="wh_headimg"></div><div class="wh_msg_item_6" id="wh_msg_item_6"></div></section>
+                    <section class="wh_msg_1">
+                        <div class="wh_headimg"></div>
+                        <div class="wh_msg_item_1"></div>
+                    </section>
+                    <section class="wh_msg_2">
+                        <div class="wh_headimg"></div>
+                        <div class="wh_msg_item_2"></div>
+                    </section>
+                    <section class="wh_msg_3">
+                        <div class="wh_headimg"></div>
+                        <div class="wh_msg_item_3"></div>
+                    </section>
+                    <section class="user_msg_1">
+                        <div class="user_headimg"></div>
+                        <div class="user_msg_item_1"></div>
+                    </section>
+                    <section class="wh_msg_4">
+                        <div class="wh_headimg"></div>
+                        <div class="wh_msg_item_4"></div>
+                    </section>
+                    <section class="wh_msg_5">
+                        <div class="wh_headimg"></div>
+                        <div class="wh_msg_item_5"></div>
+                        <div id="WxMomentVideo" class="video_con"></div>
+                    </section>
+                    <section class="user_msg_2">
+                        <div class="user_headimg"></div>
+                        <div class="user_msg_item_2"></div>
+                    </section>
+                    <section class="wh_msg_6">
+                        <div class="wh_headimg"></div>
+                        <div class="wh_msg_item_6" id="wh_msg_item_6"></div>
+                    </section>
                 </div>
             </div>
             <div class="wx_input_bar"></div>
             <div class="wx_keyboard">
                 <span id="kb_text_1"></span>
                 <span id="kb_text_2"></span>
+
                 <div class="btn_send"></div>
                 <!-- <div class="btn_send_disabled"></div> -->
             </div>
@@ -105,60 +142,299 @@
     <article class="swiper-container" id="details">
         <div class="swiper-wrapper" id="detailsList">
             <div class="swiper-slide">
-                <div class="detailsImg">
-                    <img src="../img/detailsCanvas1.png">
-                    <canvas width="510" height="423"></canvas>
+
+                <div class="a1">
+                    <div class="element-box">
+                        <div class="element-box-contents">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="9176495864" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<polygon fill="#08A1EF" points="64,32 32,64 0,32 32,0 " style="fill: rgb(255, 255, 255);"></polygon>
+</svg>
+                        </div>
+                    </div>
+                    <div class="company">简介</div>
+                    <ul class="elementRotate">
+                        <li class="bigSvg svg1">
+                            <div class="element-box-contents" style="width: 100%; height: 100%; position: relative;">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="7542636217" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(212, 139, 51);"></path>
+</svg>
+                            </div>
+                            <span>课程<br>特色</span>
+
+                        </li>
+                        <li class="svg2">
+                            <div class="svg">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(240, 184, 117);"></path>
+</svg>
+                            </div>
+                            <span>1</span>
+
+                            <div class="line"></div>
+                            <div class="con">课外<br>辅导</div>
+                        </li>
+                        <li class="svg3">
+                            <div class="svg">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(201, 201, 201);"></path>
+</svg>
+                            </div>
+                            <span>6</span>
+
+                            <div class="line"></div>
+                            <div class="con">全托<br>服务</div>
+
+                        </li>
+                        <li class="svg4">
+                            <div class="svg">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(201, 201, 201);"></path>
+</svg>
+                            </div>
+                            <span>2</span>
+
+                            <div class="line"></div>
+                            <div class="con">智力<br>开发</div>
+                        </li>
+                        <li class="svg5">
+                            <div class="svg">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(240, 184, 117);"></path>
+</svg>
+                            </div>
+                            <span>3</span>
+
+                            <div class="line"></div>
+                            <div class="con">课外<br>辅导</div>
+                        </li>
+                        <li class="svg6">
+                            <div class="svg">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(201, 201, 201);"></path>
+</svg>
+                            </div>
+                            <span>4</span>
+
+                            <div class="line"></div>
+                            <div class="con">课外<br>辅导</div>
+                        </li>
+                        <li class="svg7">
+                            <div class="svg">
+                                <svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="100%" height="100%" viewBox="0 0 312 270" enable-background="new 0 0 312 270" xml:space="preserve" preserveAspectRatio="none" class="element svg-element">
+<path fill="#08A1EF" d="M311.352,134.625l-77.67,134.528H78.342L0.672,134.625L78.342,0.097h155.34L311.352,134.625z" style="fill: rgb(240, 184, 117);"></path>
+</svg>
+                            </div>
+                            <span>5</span>
+
+                            <div class="line"></div>
+                            <div class="con">课外<br>辅导</div>
+                        </li>
+                    </ul>
+                    <div class="bot">教育引进国内外先进的教学理念，独特的教学模式，前沿的教育系统，充分发掘孩子的潜力，弥补孩子的不足，发挥孩子的优势，让每一个孩子都能得到优质教育。</div>
                 </div>
-                <div class="detailsText"></div>
+
             </div>
             <div class="swiper-slide">
-                <div class="detailsImg">
-                    <img src="../img/detailsCanvas2.png">
-                    <canvas width="374" height="374"></canvas>
+                <div class="d1">
+                    <div id="wrap">
+                        <h2><span>珠峰课程体系</span></h2>
+
+                        <div>
+                            <span>选项卡一</span>
+
+                            <div>
+                                <span>选项卡二</span>
+
+                                <div>
+                                    <span>选项卡三</span>
+
+                                    <div>
+                                        <span>选项卡二</span>
+
+                                        <div>
+                                            <span>选项卡三</span>
+
+                                            <div>
+                                                <span>选项卡二</span>
+
+                                                <div>
+                                                    <span>选项卡三</span>
+
+                                                    <div>
+                                                        <span>选项卡四</span>
+
+                                                        <div>
+                                                            <span>选项卡五 <div><span>选项卡六</span>
+
+                                                                <div><span>选项卡六</span>
+
+                                                                    <div><span>选项卡六</span>
+
+                                                                        <div></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div></span>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="detailsText"></div>
+
+
             </div>
             <div class="swiper-slide">
-                <div class="detailsImg">
-                    <img src="../img/detailsCanvas3.png">
-                    <canvas width="386" height="336"></canvas>
+
+                <div class="f1">
+                    <p class="fTitle"><img src="../img/fT.png"></p>
+                    <ul class="teacherList">
+                        <li>
+                            <div class="pic">
+                                <img src="../img/fPic1.png">
+                            </div>
+                            <p class="name">耿老师</p>
+
+                            <p class="info">教学总监,有丰富的授课经验经验,深受学生</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="../img/fPic2.png">
+                            </div>
+                            <p class="name">周老师</p>
+
+                            <p class="info">教学总监,有丰富的授课经验经验,深受学生</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="../img/fPic3.png">
+                            </div>
+                            <p class="name">张老师</p>
+
+                            <p class="info">教学总监,有丰富的授课管理经验管理经验</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="../img/fPic3.png">
+                            </div>
+                            <p class="name">张老师</p>
+
+                            <p class="info">教学总监,有丰富的授课管理经验管理经验</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="../img/fPic3.png">
+                            </div>
+                            <p class="name">张老师</p>
+
+                            <p class="info">教学总监,有丰富的授课管理经验管理经验</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="../img/fPic2.png">
+                            </div>
+                            <p class="name">周老师</p>
+
+                            <p class="info">教学总监,有丰富的授课经验经验,深受学生的欢迎</p>
+                        </li>
+
+
+                    </ul>
+
                 </div>
-                <div class="detailsText"></div>
+
+
             </div>
             <div class="swiper-slide">
-                <div class="detailsImg">
-                    <img src="../img/detailsCanvas4.png">
-                    <canvas width="259" height="306"></canvas>
+
+                <div class="c1">
+                    <p class="con1">没有招生部门<br>但学生数量<span>每年翻倍</span></p>
+
+                    <p class="con2">没有就业部门<br>但学生的平均工资<span>超过一万二</span></p>
+
+                    <div class="jobTitle">就业信息</div>
+                    <div class="jobInfo">
+                        <img src="../img/01.png">
+                    </div>
+
+
                 </div>
-                <div class="detailsText"></div>
+
             </div>
             <div class="swiper-slide">
-                <div class="detailsImg">
-                    <img src="../img/detailsCanvas5.png">
-                    <canvas width="221" height="284"></canvas>
+
+                <div class="b1">
+                    <div class="box">
+                        <div class="img1">
+                            <img src="../img/bImg1.jpeg" alt=""/>
+                        </div>
+                        <div class="img2">
+                            <img src="../img/bImg2.jpeg" alt=""/>
+                        </div>
+                        <div class="img3">
+                            <img src="../img/bImg3.png">
+                        </div>
+                    </div>
                 </div>
-                <div class="detailsText"></div>
+
             </div>
             <div class="swiper-slide">
-                <div class="detailsImg">
-                    <img src="../img/detailsCanvas6.png">
-                    <canvas width="478" height="419"></canvas>
+
+                <div class="e1">
+                    <p class="title">
+                        <span>联系我们</span>
+                        <span>concat us</span>
+                    </p>
+                    <ul>
+                        <li>
+                <span class="icon1">
+                    <img src="../img/phone.png">
+                </span>
+
+                            <div class="conText contText1"><span>联系电话</span><br>0898-658091111</div>
+                        </li>
+                        <li>
+                <span class="icon2">
+                    <img src="../img/email.png"/>
+                </span>
+
+                            <div class="conText contText2"><span>电子邮箱</span><br>
+                                XXXXX@foxmail.com<br>
+                                XXXXX@foxmail.com
+                            </div>
+                        </li>
+                        <li>
+                <span class="icon3">
+                    <img src="../img/address.png"/>
+                </span>
+
+                            <div class="conText contText3"><span>学校地址</span>
+                                <Br>
+                                北京昌平区回龙观东大街3号楼02号东段珠峰培训
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="detailsText"></div>
+
             </div>
 
+            <!--<div class="swiper-pagination"></div>-->
+
         </div>
-        <div class="swiper-pagination"></div>
         <div id="detailsReturn"></div>
     </article>
 </div>
 </body>
 </html>
 
-<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
-<!--<script src="http://cdnjs.gtimg.com/cdnjs/libs/wxmoment/0.0.2-rc1/wxmoment.min.js"></script>-->
-
-<!--<script src="../js/jWeixin.js"></script>-->
 <script src="../js/wexmonent.js"></script>
 <script src="../js/jquery-1.11.1.min.js"></script>
 <script src="../js/main.js"></script>
