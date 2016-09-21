@@ -1941,6 +1941,7 @@ img {
     left: 10%;
     top: 5%;
     font-weight: bold;
+    text-align: left;
 }
 
 .con1 span, .con2 span {
