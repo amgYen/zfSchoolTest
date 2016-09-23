@@ -11,6 +11,7 @@ for (var i = 0; i < fileList.length; i++) {
     loader.addImage(basePath + fileList[i]);
 }
 
+
 //进度监听
 loader.addProgressListener(function (e) {
     var percent = Math.round((e.completedCount / e.totalCount) * 100);
@@ -38,30 +39,29 @@ function loadingAnimate(percent) {
             if (i >= 100) {
                 clearInterval(loadtimer);
                 $(".loading").fadeOut();
-                page1Come();
+                //page1Come();
                 //weichat();
+                callUnlockPage();
+
             }
-            if (i > 50) {
-                $(".lp_right_wrap").css({"-webkit-transform": "rotate(-" + (i - 50) * 3.6 + "deg)"})
-            } else {
-                $(".lp_left_wrap").css({"-webkit-transform": "rotate(-" + i * 3.6 + "deg)"})
-            }
+            //if (i > 50) {
+            //    $(".lp_right_wrap").css({"-webkit-transform": "rotate(-" + (i - 50) * 3.6 + "deg)"})
+            //} else {
+            //    $(".lp_left_wrap").css({"-webkit-transform": "rotate(-" + i * 3.6 + "deg)"})
+            //}
             $("#loading_num_txt").text(i);
         }, 50);
     }
 }
 
-function onInit() {
-
-}
 
 $(document).ready(function (e) {
     _w = $(window).width();
     _h = $(window).height();
 
-    //横屏提示
+    /*//横屏提示
     new WxMoment.OrientationTip();
-
+    */
     //监测代码
     wa = new WxMoment.Analytics({
         projectName: "20151103mengdian"
@@ -106,7 +106,7 @@ $(document).ready(function (e) {
 ///*腾讯视频嵌入结束*/
 
 
-$(".loading,.pages,.unlock_page,.result_page").bind("touchstart", function () {
+$(".loading,.unlock_page,.result_page").bind("touchstart", function () {
     event.preventDefault();
 })
 var wxAudio = new Audio();
@@ -149,20 +149,20 @@ $(".lp_left_wrap").css({"-webkit-transform":"rotate(-"+i*3.6+"deg)"})
 $("#loading_num_txt").text(i);
 },100);
 }*/
-var myAudio = document.getElementById("call"),
-    myAudio1 = document.getElementById("whsay"),
-    myAudio2 = document.getElementById("zzs");
-function page1Come() {
-    $("#page1").show();
-    callbtn.initPlay();
-    myAudio.play();
-}
-function page2Come() {
-    myAudio.pause();
-    $("#page1").hide();
-    $("#page2").show();
-    whsay.initPlay();
-}
+//var myAudio = document.getElementById("call"),
+//    myAudio1 = document.getElementById("whsay"),
+//    myAudio2 = document.getElementById("zzs");
+//function page1Come() {
+//    $("#page1").show();
+//    callbtn.initPlay();
+//    myAudio.play();
+//}
+//function page2Come() {
+//    myAudio.pause();
+//    $("#page1").hide();
+//    $("#page2").show();
+//    whsay.initPlay();
+//}
 loadTextAnimate();
 function loadTextAnimate() {
     var li = 0;
@@ -179,51 +179,51 @@ function loadTextAnimate() {
         }
     }, 100);
 }
-var CALLBTN = function (img) {
-    this.height = 150;
-    this.width = 150;
-    this.index = 0;
-    this.total = 20;
-    this.next = 10;
-    this.totalindex = 0;
-    this.interval;
-    this.img = img;
-    this.line = 1;
-    this.timer = 20;
-}
-CALLBTN.prototype = {
-    initPlay: function () {
-        var _self = this;
-        clearInterval(this.interval);
-        this.interval = setInterval(function () {
-            _self.index++;
-            _self.totalindex++;
-            var positionY = 0;
-            if (_self.totalindex == _self.next) {
-                _self.index = 0;
-            }
-            if (_self.totalindex >= _self.next) {
-                positionY = -_self.height;
-            }
-            if (_self.totalindex >= _self.total) {
-                _self.totalindex = 0;
-                positionY = 0;
-                _self.index = 0;
-            }
-            var positionX = -_self.index * _self.width;
-            /*			console.log(_self.totalindex+"|"+_self.index+"|"+positionX+"|"+positionY);
-             */
-            _self.img.css({'background-position': positionX + 'px ' + positionY + 'px'});
+//var CALLBTN = function (img) {
+//    this.height = 150;
+//    this.width = 150;
+//    this.index = 0;
+//    this.total = 20;
+//    this.next = 10;
+//    this.totalindex = 0;
+//    this.interval;
+//    this.img = img;
+//    this.line = 1;
+//    this.timer = 20;
+//}
+//CALLBTN.prototype = {
+//    initPlay: function () {
+//        var _self = this;
+//        clearInterval(this.interval);
+//        this.interval = setInterval(function () {
+//            _self.index++;
+//            _self.totalindex++;
+//            var positionY = 0;
+//            if (_self.totalindex == _self.next) {
+//                _self.index = 0;
+//            }
+//            if (_self.totalindex >= _self.next) {
+//                positionY = -_self.height;
+//            }
+//            if (_self.totalindex >= _self.total) {
+//                _self.totalindex = 0;
+//                positionY = 0;
+//                _self.index = 0;
+//            }
+//            var positionX = -_self.index * _self.width;
+//            /*			console.log(_self.totalindex+"|"+_self.index+"|"+positionX+"|"+positionY);
+//             */
+//            _self.img.css({'background-position': positionX + 'px ' + positionY + 'px'});
+//
+//        }, _self.timer);
+//    },
+//    stopPlay: function () {
+//        clearInterval(this.interval);
+//    }
+//}
+//var callbtn = new CALLBTN($('.page1_btn'));
 
-        }, _self.timer);
-    },
-    stopPlay: function () {
-        clearInterval(this.interval);
-    }
-}
-var callbtn = new CALLBTN($('.page1_btn'));
-
-
+/*
 var WH1 = function (obj) {
     this.height = 1080;
     this.width = 640;
@@ -241,7 +241,7 @@ var WH1 = function (obj) {
 }
 WH1.prototype = {
     initPlay: function () {
-        myAudio1.play();
+        //myAudio1.play();
         var _self = this;
         clearInterval(this.interval);
         this.interval = setInterval(function () {
@@ -272,58 +272,58 @@ WH1.prototype = {
                 myAudio1.pause();
             }
             var positionX = -_self.index * _self.width;
-            /*console.log(_self.totalindex+"|"+_self.index+"|"+positionX+"|"+positionY);*/
+            *//*console.log(_self.totalindex+"|"+_self.index+"|"+positionX+"|"+positionY);*//*
             _self.obj.css({'background-position': positionX + 'px ' + positionY + 'px'});
         }, _self.timer);
     },
     stopPlay: function () {
         clearInterval(this.interval);
     }
-}
-var whsay = new WH1($('.page2_video'));
-
-var Ganrao = function (obj) {
-    this.height = 1082;
-    this.width = 640;
-    this.index = 0;
-    this.total = 5;
-    this.totalindex = 0;
-    this.totalnum = 30;
-    this.interval;
-    this.obj = obj;
-    this.timer = 100;
-}
-Ganrao.prototype = {
-    initPlay: function () {
-        myAudio2.play();
-        var _self = this;
-        _self.obj.show();
-        clearInterval(this.interval);
-        this.interval = setInterval(function () {
-            var positionY = 0;
-            var positionX = -_self.index * _self.width;
-            _self.obj.css({'background-position': positionX + 'px ' + positionY + 'px'});
-            _self.index++;
-            _self.totalindex++;
-            if (_self.index >= _self.total) {
-                positionX = 0;
-                _self.index = 0;
-            }
-            if (_self.totalindex >= _self.totalnum - 1) {
-                _self.stopPlay();
-                myAudio2.pause();
-                callUnlockPage();
-            }
-        }, _self.timer);
-    },
-    stopPlay: function () {
-        clearInterval(this.interval);
-    }
-}
-var gr = new Ganrao($('.page2_ganrao'));
+}*/
+//var whsay = new WH1($('.page2_video'));
+//
+//var Ganrao = function (obj) {
+//    this.height = 1082;
+//    this.width = 640;
+//    this.index = 0;
+//    this.total = 5;
+//    this.totalindex = 0;
+//    this.totalnum = 30;
+//    this.interval;
+//    this.obj = obj;
+//    this.timer = 100;
+//}
+//Ganrao.prototype = {
+//    initPlay: function () {
+//        myAudio2.play();
+//        var _self = this;
+//        _self.obj.show();
+//        clearInterval(this.interval);
+//        this.interval = setInterval(function () {
+//            var positionY = 0;
+//            var positionX = -_self.index * _self.width;
+//            _self.obj.css({'background-position': positionX + 'px ' + positionY + 'px'});
+//            _self.index++;
+//            _self.totalindex++;
+//            if (_self.index >= _self.total) {
+//                positionX = 0;
+//                _self.index = 0;
+//            }
+//            if (_self.totalindex >= _self.totalnum - 1) {
+//                _self.stopPlay();
+//                myAudio2.pause();
+//                callUnlockPage();
+//            }
+//        }, _self.timer);
+//    },
+//    stopPlay: function () {
+//        clearInterval(this.interval);
+//    }
+//}
+//var gr = new Ganrao($('.page2_ganrao'));
 
 function callUnlockPage() {
-    $("#page2,#page1").hide();
+    //$("#page2,#page1").hide();
     $(".unlock_page").show();
     resizeInit();
     setTimeout(function () {
@@ -489,10 +489,10 @@ function weichatPage() {
 
 
 var Loadwh = function (obj) {
-    this.height = 248;
-    this.width = 200;
+    this.height = 250;
+    this.width = 250;
     this.index = 0;
-    this.total = 8;
+    this.total = 7;
     this.interval;
     this.obj = obj;
     this.timer = 100;
@@ -503,8 +503,8 @@ Loadwh.prototype = {
         _self.obj.show();
         clearInterval(this.interval);
         this.interval = setInterval(function () {
-            var positionY = 0;
-            var positionX = -_self.index * _self.width;
+            var positionY = -_self.index * _self.height;
+            var positionX = 0;
             _self.obj.css({'background-position': positionX + 'px ' + positionY + 'px'});
             //console.log(_self.index+"|"+positionX+"|"+positionY);
             _self.index++;

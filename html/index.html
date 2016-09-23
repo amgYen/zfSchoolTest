@@ -19,44 +19,57 @@
 
 
 <body>
-<div class="loading">
-    <div class="loading_bg"><img src="../img/loading_bg.jpg"></div>
-    <div class="loading_icon"></div>
-    <div class="loading_progress">
-        <div class="lp_bg"></div>
-        <div class="lp_left">
-            <div class="lp_left_wrap">
-                <div class="lp_left_circle"></div>
+<!--<div class="loading">-->
+    <!--<div class="loading_bg"></div>-->
+    <!--<div class="loading_icon"></div>-->
+    <!--<div class="loading_progress">-->
+        <!--<div class="lp_bg"></div>-->
+        <!--<div class="lp_left">-->
+            <!--<div class="lp_left_wrap">-->
+                <!--<div class="lp_left_circle"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="lp_right">-->
+            <!--<div class="lp_right_wrap">-->
+                <!--<div class="lp_right_circle"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="loading_text">-->
+        <!--<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>-->
+    <!--</div>-->
+    <!-- <div class="loading_num"><span id="loading_num_txt">0</span>%</div>-->
+        <!--</div>-->
+        <div class="loading" id="loading" ontouchmove="return false;">
+            <div class="star-cnt">
+                <div class="star-1"></div>
+                <div class="star-2"></div>
+                <div class="star-3"></div>
+                <div class="star-4"></div>
+                <div class="star-5"></div>
             </div>
-        </div>
-        <div class="lp_right">
-            <div class="lp_right_wrap">
-                <div class="lp_right_circle"></div>
-            </div>
-        </div>
+            <div class="loading-monster">
+                <div class="loading_num percent" id="percent"><span id="loading_num_txt">0</span>%</div>
+            <!--<div class="percent" id="percent">0%</div>-->
     </div>
-    <div class="loading_text">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <div class="loading_num"><span id="loading_num_txt">0</span>%</div>
 </div>
 <div class="wrapper">
-    <article class="pages" id="page1">
-        <img src="../img/page1_pic.jpg" width="640"/>
-        <figure class="page1_btn"></figure>
-    </article>
-    <article class="pages" id="page2">
-        <div class="whpic">
-            <img src="../img/wh1.jpg"/>
-            <img src="../img/wh2.jpg"/>
-            <img src="../img/wh3.jpg"/>
-            <img src="../img/wh4.jpg"/>
-            <img src="../img/wh5.jpg"/>
-            <img src="../img/wh6.jpg"/>
-        </div>
-        <div class="page2_video"></div>
-        <div class="page2_ganrao"></div>
-    </article>
+    <!--<article class="pages" id="page1">-->
+        <!--<img src="../img/page1_pic.jpg" width="640"/>-->
+        <!--<figure class="page1_btn"></figure>-->
+    <!--</article>-->
+    <!--<article class="pages" id="page2">-->
+        <!--<div class="whpic">-->
+            <!--<img src="../img/wh1.jpg"/>-->
+            <!--<img src="../img/wh2.jpg"/>-->
+            <!--<img src="../img/wh3.jpg"/>-->
+            <!--<img src="../img/wh4.jpg"/>-->
+            <!--<img src="../img/wh5.jpg"/>-->
+            <!--<img src="../img/wh6.jpg"/>-->
+        <!--</div>-->
+        <!--<div class="page2_video"></div>-->
+        <!--<div class="page2_ganrao"></div>-->
+    <!--</article>-->
     <audio src="../img/call.mp3" preload="preload" id="call" loop></audio>
     <audio src="../img/wh_3s.mp3" preload="preload" id="whsay"></audio>
     <audio src="../img/zzs.mp3" preload="preload" id="zzs"></audio>
