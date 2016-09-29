@@ -87,6 +87,7 @@ function fnLock() {
 }
 
 function fnMessage(){
+    var sentM = document.querySelector("#sentM");
     var h = 0;
     var oUl = document.querySelector("#msgList");
     var keyboard = document.querySelector(".keyboard");
@@ -99,11 +100,12 @@ function fnMessage(){
     var winH = document.documentElement.clientHeight;
     processMess(0);
     function processMess(n) {
+
         var eles = document.querySelectorAll("#message li");
         timer = window.setInterval(function(){
             var ele = eles[n];
             if (!/btnMsg/.test(ele.className)) {/*正常*/
-
+                sentM.play();
                 ele.style.opacity = 1;
                 ele.style.webkitTransform = "translate(0,0)";
                 h += ele.offsetHeight;
@@ -158,6 +160,7 @@ function fnMessage(){
                 btnSend.addEventListener("touchstart",function(){
                     text1.style.display = "none";
                     text1.innerHTML = "";
+                    sentM.play();
                     ele.style.opacity = 1;
                     ele.style.webkitTransform = "translate(0,0)";
                     h+=ele.offsetHeight;
@@ -200,7 +203,7 @@ function fnCube() {
         var bBtn = true;
 
         function init() {
-            $cubeBox.css('transform', 'scale(0.7) rotateX(' + startX + 'deg) rotateY(' + startY + 'deg)');
+            $cubeBox.css('transform', 'scale(0.5) rotateX(' + startX + 'deg) rotateY(' + startY + 'deg)');
             $cubeBox.css('transition', '1s');
             $cubeBox.on('transitionEnd webkitTransitionEnd', function () {
                 $cubeBox.css('transition', '');
@@ -216,6 +219,7 @@ function fnCube() {
                 downY = touch.pageY;
                 bBtn = true;
                 $(document).on('touchmove.move', function (ev) {
+                    ev.preventDefault();
                     bBtn = false;
                     var touch = ev.originalEvent.changedTouches[0];
 
@@ -229,7 +233,7 @@ function fnCube() {
                         x = -startX - 70;
                     }
 
-                    $cubeBox.css('transform', 'scale(0.7) rotateX(' + (startX + x) + 'deg) rotateY(' + (startY + y) + 'deg)');
+                    $cubeBox.css('transform', 'scale(0.5) rotateX(' + (startX + x) + 'deg) rotateY(' + (startY + y) + 'deg)');
 
                 });
                 $(document).on('touchend.move', function () {
