@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+</head>
+<body>
+<div class="main">
+    <div class="music">
+        <audio src="img/weichat_msg.mp3" id="chatM"></audio>
+        <audio src="img/SentMessage.mp3" id="sentM"></audio>
+    </div>
+    <div id="loading">
+        <div class="star-cnt">
+            <div class="star-1"></div>
+            <div class="star-2"></div>
+            <div class="star-3"></div>
+            <div class="star-4"></div>
+            <div class="star-5"></div>
+        </div>
+        <div class="percent">0%</div>
+    </div>
+    <div id="unlock">
+        <p class="time">17:02</p>
+
+        <p class="date">09月28日 星期三</p>
+
+        <p class="lockImg"><img src="img/weixin_msg.png"></p>
+        <div class="tipWrap">
+        <div class="unlockTip" id="unlockTip"></div>
+        </div>
+    </div>
+
+    <div id="message">
+        <ul id="msgList">
+            <li class="left">哎，毕业了，工作还遥遥无期，好愁啊！<span></span></li>
+            <li class="right">怎么会？认识我的毕业生一个月都拿一万多的好工作呢<span></span></li>
+            <li class="right">是不是没学HTML5<span></span></li>
+            <li class="right">是不是没学移动端<span></span></li>
+            <li class="left btnMsg">H5和移动端我都学习了啊！<span></span></li>
+            <li class="left btnMsg">可是我还是找不到工作<span></span></li>
+            <li class="right">那就是HTML5的核心基础JS编程学的不够扎实，只顾花哨的效果了。原生JavaScript功夫是王道啊<span></span></li>
+            <li class="right">还有就是现在的前端开发已经工程化了，像angular、react、node、webpack这些也要学，这些才是现在互联网开发的大势所趋！<span></span></li>
+            <li class="right">原生JavaScript编程基础要精，像react之类的前端高级框架要熟，所以认识我的同学，工资普遍在12K以上！<span></span></li>
+            <li class="left btnMsg2">啊？竟然有这么大差距呢！<span></span></li>
+            <li class="left btnMsg2">这些东西我都不知道呢！<span></span></li>
+            <li class="left btnMsg3">真高兴认识了你！<span></span></li>
+            <li class="left btnMsg3">那我应该怎么办呢？<span></span></li>
+            <li class="right ">来珠峰培训学这些知识，工资不到九千退学费！<span></span></li>
+            <li class=" right ">珠峰培训七年专注前端培训，全国闻名的HTML5培训学校。<span></span></li>
+            <li class=" right ">详细的介绍你看下来的介绍吧<span></span></li>
+        </ul>
+
+        <div class="inputBar"></div>
+        <div class="keyboard">
+            <span class="text1"></span>
+            <span class="btnSend"></span>
+        </div>
+
+    </div>
+
+    <div id="cube">
+        <ul id="cubeBox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="cubeTip"></div>
+    </div>
+
+    <article class="swiper-container" id="details">
+        <div class="swiper-wrapper" id="detailsList">
+            <div class="swiper-slide">
+              <div class="a1">
+                  <div id="course">
+                      <h2><span>课程大纲</span></h2>
+                      <div>
+                          <span>JavaScript核心基础部分</span>
+
+                          <div>
+                              <span>JavaScript基础实战部分</span>
+
+                              <div>
+                                  <span>JavaScript核心原理</span>
+
+                                  <div>
+                                      <span>jQuery源码级课程:从原理到实战</span>
+
+                                      <div>
+                                          <span>设计模式和设计规范</span>
+
+                                          <div>
+                                              <span>基于Promise模式的AJAX库</span>
+
+                                              <div>
+                                                  <span>模块化和组件开发实战</span>
+
+                                                  <div>
+                                                      <span>协同开发和项目管理</span>
+
+                                                      <div>
+                                                            <span>后台服务,HTTP协议和Ajax <div><span>hyBird模式及jsBridge实战应用</span>
+
+                                                                <div><span>BAT企业级webApp开发与实战</span>
+
+                                                                    <div><span>微信开发及JS-SDK的使用</span>
+
+                                                                        <div>
+                                                                            <span>Node.js基础与实战</span>
+                                                                            <div>
+                      <span>Express快速开发框架</span>
+                        <div>
+                            <span>主流前端框架:React/Angular/gulp/webpack</span>
+                            <div>
+                                <span>数据库Mongodb/Mysql/Redis</span>
+                                <div>
+                                    <span>websocket&socket.io</span>
+                                    <div>
+                                        <span>更详细的课程大纲请访问官网查看</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>                                                    </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div></span>
+                                                      </div>
+
+
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+
+              </div>
+
+            </div>
+            <div class="swiper-slide">
+                <div class="d1">
+                    <div class="dCourse">课程体系</div>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p id="last"></p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+
+                <div class="f1">
+                    <p class="fTitle"><img src="img/fT.png"></p>
+                    <ul class="teacherList">
+                        <li>
+                            <div class="pic">
+                                <img src="img/fpic1.png">
+                            </div>
+                            <p class="name">周啸天</p>
+
+                            <p class="info">曾腾讯高级软件工程师</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="img/fpic2.jpg">
+                            </div>
+                            <p class="name">姜文</p>
+
+                            <p class="info">曾百度高级软件工程师</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="img/fpic3.png">
+                            </div>
+                            <p class="name">田喜</p>
+
+                            <p class="info">曾猎豹移动高级软件开发工程师</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="img/fpic4.png">
+                            </div>
+                            <p class="name">张亚涛</p>
+
+                            <p class="info">在百度担任高级前端开发工程师</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="img/fpic5.png">
+                            </div>
+                            <p class="name">郭永峰</p>
+
+                            <p class="info">用友软件高级前端架构师、技术总监</p>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="img/fpic6.png">
+                            </div>
+                            <p class="name">张仁阳</p>
+
+                            <p class="info">曾用友软件,爱奇艺担任高级软件工程师</p>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+            <div class="swiper-slide">
+
+                <div class="c1">
+                    <p class="con1">没有招生部门<br>但学生数量<span>每年翻倍</span></p>
+
+                    <p class="con2">没有就业部门<br>但学生的平均工资<span>超过一万二</span></p>
+
+                    <div class="jobTitle">就业信息</div>
+                    <div class="jobInfo">
+                        <img src="img/01.png">
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="swiper-slide">
+
+                <div class="b1">
+                    <div class="box">
+                        <div class="img1">
+                            <img src="img/bgImg1.jpg" alt=""/>
+                        </div>
+                        <div class="img2">
+                            <img src="img/bgImg2.jpg" alt=""/>
+                        </div>
+                        <div class="img3">
+                            <img src="img/bgImg3.jpg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-slide">
+
+                <div class="e1">
+                    <p class="title">
+                        <span>联系我们</span>
+                        <span>concat us</span>
+                    </p>
+                    <ul>
+                        <li>
+                <span class="icon1">
+                    <img src="img/phone.png">
+                </span>
+
+                            <div class="conText contText1"><span>QQ:</span>1144709265<br><span>TEL:</span>4001806960<br><span>手机:</span>15010063597</div>
+                        </li>
+
+                        <li>
+                <span class="icon3">
+                    <img src="img/address.png"/>
+                </span>
+
+                            <div class="conText contText3"><span>学校地址</span>
+                                <Br>
+                                北京昌平区回龙观东大街3号楼02号东段珠峰培训
+                            </div>
+                        </li>
+                        <li class="addressInfo">
+                            <img src="img/addressInfo.png">
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="detailsReturn"></div>
+    </article>
+
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/index.js" charset="utf-8"></script>
