@@ -67,12 +67,12 @@ function fnLock() {
     var unlockTip = document.querySelector("#unlockTip");
     var tipWrap = document.querySelector("#tipWrap");
     tipWrap.addEventListener("touchstart", function (e) {
-        var touch1 = event.touches[0];
+        var touch1 = e.touches[0];
         this.startX = touch1.pageX;
     }, false);
     tipWrap.addEventListener("touchmove", function (e) {
         e.preventDefault();//阻止页面滚动
-        var touch1 = event.touches[0];
+        var touch1 = e.touches[0];
         var moveX = touch1.pageX;
         var mx = moveX - this.startX;
         this.movePos = mx;
