@@ -28,9 +28,9 @@ function loadImg(oImg, i) {
             $(".percent").html(num + "%");
             if (j == fileList.length) {
                 window.setTimeout(function () {
-                    $("#loading").remove();
-                    fnUnlockTip();
-                    fnLock();
+                    //$("#loading").remove();
+                    //fnUnlockTip();
+                    //  fnLock();
                 }, 1000)
 
             }
@@ -58,7 +58,6 @@ function fnUnlockTip(){
         }
     }, 70);
 }
-
 
 function fnLock() {
     chatM.play();
