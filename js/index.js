@@ -29,6 +29,7 @@ function loadImg(oImg, i) {
             if (j == fileList.length) {
                 window.setTimeout(function () {
                     $("#loading").remove();
+                    chatM.play();
                     fnUnlockTip();
                     fnLock();
                 }, 1000)
@@ -60,7 +61,7 @@ function fnUnlockTip(){
 }
 
 function fnLock() {
-    chatM.play();
+
     var $unlock = $("#unlock");
     $unlock.show();
     var unlockTip = document.querySelector("#unlockTip");
@@ -81,7 +82,7 @@ function fnLock() {
             'linear')
     }, false);
     tipWrap.addEventListener("touchend", function (e) {
-        if (this.movePos > 330) {
+        if (this.movePos > 130) {
             $("#unlock").remove();
             fnMessage();
         } else {
