@@ -27,9 +27,9 @@ function loadImg(oImg, i) {
             num = Math.round(j / fileList.length * 100);
             $(".percent").html(num + "%");
             if (j == fileList.length) {
+                chatM.play();
                 window.setTimeout(function () {
                     $("#loading").remove();
-                    chatM.play();
                     fnUnlockTip();
                     fnLock();
                 }, 1000)
