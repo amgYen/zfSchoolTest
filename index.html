@@ -15,7 +15,7 @@
         <audio src="img/weichat_msg.mp3" id="chatM"></audio>
         <audio src="img/SentMessage.mp3" id="sentM"></audio>
     </div>
-    <div id="loading">
+    <div id="loading" ontouchmove="return false;">
         <div class="star-cnt">
             <div class="star-1"></div>
             <div class="star-2"></div>
@@ -31,7 +31,7 @@
         <p class="date">09月28日 星期三</p>
 
         <p class="lockImg"><img src="img/weixin_msg.png"></p>
-        <div class="tipWrap">
+        <div class="tipWrap" id="tipWrap">
         <div class="unlockTip" id="unlockTip"></div>
         </div>
     </div>
@@ -107,29 +107,28 @@
                                                       <span>协同开发和项目管理</span>
 
                                                       <div>
-                                                            <span>后台服务,HTTP协议和Ajax <div><span>hyBird模式及jsBridge实战应用</span>
+                                                            <span>后台服务,HTTP协议和Ajax
+                                                                <div><span>hyBird模式及jsBridge实战应用</span>
 
                                                                 <div><span>BAT企业级webApp开发与实战</span>
 
                                                                     <div><span>微信开发及JS-SDK的使用</span>
 
                                                                         <div>
-                                                                            <span>Node.js基础与实战</span>
-                                                                            <div>
-                      <span>Express快速开发框架</span>
-                        <div>
-                            <span>主流前端框架:React/Angular/gulp/webpack</span>
-                            <div>
-                                <span>数据库Mongodb/Mysql/Redis</span>
-                                <div>
-                                    <span>websocket&socket.io</span>
-                                    <div>
-                                        <span>更详细的课程大纲请访问官网查看</span>
-                                    </div>
-                                </div>
-                            </div>
+                                                                            <!--<span>Node.js基础与实战</span>-->
+                                                                            <span><!--主流前端框架:-->React/Angular/gulp/webpack</span>
+                                                                            <!--<div>-->
+                      <!--<span>Express快速开发框架</span>-->
+                        <!--<div>-->
+                            <!--<span>主流前端框架:React/Angular/gulp/webpack</span>-->
+                            <!--<div>-->
+                                <!--<span>数据库Mongodb/Mysql/Redis</span>-->
+                                <!--<div>-->
+                                    <!--<span>websocket&socket.io</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                        </div>                                                    </div>
+                        <!--</div>                                                    </div>-->
 
                                                                         </div>
                                                                     </div>
@@ -300,6 +299,7 @@
 </div>
 </body>
 </html>
-<script src="js/jquery-1.11.1.min.js"></script>
+<!--<script src="js/jquery-1.11.1.min.js"></script>-->
+<script src="js/zepto.min.js"></script>
 <script src="js/swiper.min.js"></script>
 <script src="js/index.js" charset="utf-8"></script>

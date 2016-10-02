@@ -15,9 +15,15 @@ ul {
 }
 
 .main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: #000;
+    overflow: hidden;
 }
 
 #loading {
@@ -265,14 +271,15 @@ ul {
     text-align: center;
 }
 */
+
 .tipWrap{
     position: absolute;
     z-index: 100;
     display: block;
-    bottom: 0.5rem;
+    bottom: 0.2rem;
     left: 0;
     width: 100%;
-    height: 0.8rem;
+    height: 1.2rem;
     background: none;
 
 }
@@ -302,9 +309,10 @@ ul {
 }
 #message ul{
     width: 100%;
-    height: 100%;
+    height: 96%;
     transition: 1s;
     -webkit-transition: 1s;
+    padding: 2% 0;
 }
 #message ul  li {
     max-width: 4rem;
@@ -318,8 +326,13 @@ ul {
     background: #99ff66;
     list-style: none;
     transform: translate(0, 0.5rem);
+    -webkit-transform: translate(0, 0.5rem);
     opacity: 0;
 }
+/*#message ul  li:nth-child(1){*/
+    /*transition: 1s;*/
+    /*-webkit-transition: 1s;*/
+/*}*/
 
 #message ul li.left {
     float: left;
@@ -416,6 +429,7 @@ ul {
     background: url(../img/cubeBg.jpg) no-repeat;
     background-size: cover;
     perspective: 8rem;
+    -webkit-perspective: 8rem;
     overflow: hidden;
     display: none;
 }
@@ -424,17 +438,20 @@ ul {
     width: 5.1rem;
     height: 5.1rem;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     position: absolute;
     left: 50%;
     top: 20%;
     margin-left: -2.6rem;
     transform: scale(0) rotateX(-45deg) rotateY(-135deg);
+    -webkit-transform: scale(0) rotateX(-45deg) rotateY(-135deg);
     transform-origin: 2.55rem 2.55rem -2.55rem;
-    -webkit-transition:  1s;
-    -moz-transition:  1s;
-    -ms-transition:  1s;
-    -o-transition:  1s;
-    transition:  1s;
+    -webkit-transform-origin: 2.55rem 2.55rem -2.55rem;
+    -webkit-transition:  0.5s;
+    -moz-transition:  0.5s;
+    -ms-transition:  0.5s;
+    -o-transition:  0.5s;
+    transition:  0.5s;
 }
 
 #cubeBox li {
@@ -457,7 +474,9 @@ ul {
     left: 5.1rem;
     top: 0;
     transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
     transform-origin: left;
+    -webkit-transform-origin: left;
 }
 
 #cubeBox li:nth-of-type(3) {
@@ -465,6 +484,7 @@ ul {
     left: 0;
     top: 0;
     transform: translateZ(-5.1rem) rotateY(180deg);
+    -webkit-transform: translateZ(-5.1rem) rotateY(180deg);
 }
 
 #cubeBox li:nth-of-type(4) {
@@ -472,7 +492,9 @@ ul {
     right: 5.1rem;
     top: 0;
     transform: rotateY(-90deg);
+    -webkit-transform: rotateY(-90deg);
     transform-origin: right;
+    -webkit-transform-origin: right;
 }
 
 #cubeBox li:nth-of-type(5) {
@@ -480,7 +502,9 @@ ul {
     right: 0;
     top: -5.1rem;
     transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
     transform-origin: bottom;
+    -webkit-transform-origin: bottom;
 }
 
 #cubeBox li:nth-of-type(6) {
@@ -488,7 +512,9 @@ ul {
     right: 0;
     top: 5.1rem;
     transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
     transform-origin: top;
+    -webkit-transform-origin: top;
 }
 
 #cubeTip {
@@ -638,8 +664,11 @@ ul {
     top:0.55rem;
     background: #8fbb4c;
     transform-origin: top;
+    -webkit-transform-origin: top;
     transform: rotateX(-120deg);
+    -webkit-transform: rotateX(-120deg);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 #course > div:nth-of-type(1) {
@@ -654,6 +683,7 @@ ul {
     text-indent: 0.2rem;
     box-shadow: inset 0 0 0 0.2rem rgba(0, 0, 0, 1);
     transition: 1s;
+    -webkit-transition: 1s;
     font-size: 0.24rem;
 }
 
@@ -675,6 +705,24 @@ ul {
     }
 
 }
+@-webkit-keyframes show {
+    0% {
+        -webkit-transform: rotateX(-120deg);
+    }
+    25% {
+        -webkit-transform: rotateX(30deg);
+    }
+    50% {
+        -webkit-transform: rotateX(-15deg);
+    }
+    75% {
+        -webkit-transform: rotateX(15deg);
+    }
+    100% {
+        -webkit-transform: rotateX(0deg);
+    }
+
+}
 
 @keyframes hide {
     0% {
@@ -682,6 +730,14 @@ ul {
     }
     100% {
         transform: rotateX(-120deg);
+    }
+}
+@-webkit-keyframes hide {
+    0% {
+        -webkit-transform: rotateX(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(-120deg);
     }
 }
 
@@ -750,6 +806,7 @@ ul {
 
 #n4 .img3 {
     animation: rotateInUpRight 3s 2.5s 1 both;
+    -webkit-animation: rotateInUpRight 3s 2.5s 1 both;
 }
 
 .img1 img, .img2 img, .img3 img {
@@ -761,14 +818,17 @@ ul {
 
 .img1 img {
     transform: rotate(7deg);
+    -webkit-transform: rotate(7deg);
 }
 
 .img2 img {
     transform: rotate(349deg);
+    -webkit-transform: rotate(349deg);
 }
 
 .img3 img {
     transform: rotate(9deg);
+    -webkit-transform: rotate(9deg);
 }
 
 /*c1*/
@@ -816,6 +876,7 @@ ul {
 
 #n3 .jobTitle {
     animation: bounceInDown 1s ease-in-out 2s 1 both;
+    -webkit-animation: bounceInDown 1s ease-in-out 2s 1 both;
 }
 
 .jobInfo {

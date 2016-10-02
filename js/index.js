@@ -15,7 +15,7 @@ var sentM = document.querySelector("#sentM");
 var fileList = ['cubeImg1.png', 'cubeImg2.png', 'cubeImg3.png', 'cubeImg4.png', 'cubeImg5.png', 'cubeImg6.png', 'date.png', 'unlock.png', 'weixin_msg.png', 'unlock_bg.jpg',  'user_headimg.png', 'icon_input.png', 'weichat.png',  'keyboard.png'];
 for (var i = 0; i < fileList.length; i++) {
     var filed = fileList[i];
-    loadImg(filed,i);
+   loadImg(filed,i);
 }
 var j = 0, num = null, loadtimer;
 function loadImg(oImg, i) {
@@ -28,9 +28,9 @@ function loadImg(oImg, i) {
             $(".percent").html(num + "%");
             if (j == fileList.length) {
                 window.setTimeout(function () {
-                    //$("#loading").remove();
-                    //fnUnlockTip();
-                    //  fnLock();
+                    $("#loading").remove();
+                    fnUnlockTip();
+                    fnLock();
                 }, 1000)
 
             }
@@ -61,33 +61,41 @@ function fnUnlockTip(){
 
 function fnLock() {
     chatM.play();
-    $("#unlock").show();
+    var $unlock = $("#unlock");
+    $unlock.show();
     var unlockTip = document.querySelector("#unlockTip");
-    unlockTip.addEventListener("touchstart", function (e) {
+    var tipWrap = document.querySelector("#tipWrap");
+    tipWrap.addEventListener("touchstart", function (e) {
         var touch1 = event.touches[0];
         this.startX = touch1.pageX;
     }, false);
-    unlockTip.addEventListener("touchmove", function (e) {
+    tipWrap.addEventListener("touchmove", function (e) {
         e.preventDefault();//阻止页面滚动
         var touch1 = event.touches[0];
         var moveX = touch1.pageX;
         var mx = moveX - this.startX;
         this.movePos = mx;
-        $("#unlock").css("transform", "translate(" + mx + "px)");
+        $unlock.animate({
+                translate3d: mx+"px,0,0"
+            }, 200,
+            'linear')
     }, false);
-    unlockTip.addEventListener("touchend", function (e) {
-        if (this.movePos > 130) {
+    tipWrap.addEventListener("touchend", function (e) {
+        if (this.movePos > 330) {
             $("#unlock").remove();
             fnMessage();
         } else {
-            $("#unlock").css("transform", "translate(0px)");
+            $unlock.animate({
+                    translate3d: '0,0,0'
+                }, 200,
+                'linear')
         }
     }, false);
 }
 
 function fnMessage(){
     var sentM = document.querySelector("#sentM");
-    var h = 0;
+    var h = 65;
     var oUl = document.querySelector("#msgList");
     var keyboard = document.querySelector(".keyboard");
     var timer = null;
@@ -97,21 +105,29 @@ function fnMessage(){
     message.style.display = "block";
     inputBar.style.display = "block";
     var winH = document.documentElement.clientHeight;
-    processMess(0);
+    var eles = document.querySelectorAll("#message li");
+    processMess(1);
+    window.setTimeout(function(){
+        sentM.currentTime = 0;
+        sentM.play();
+        eles[0].style.opacity = 1;
+        eles[0].style.webkitTransform = "translate(0,0)";
+    },500);
     function processMess(n) {
-
-        var eles = document.querySelectorAll("#message li");
         timer = window.setInterval(function(){
+            sentM.currentTime = 0;
             var ele = eles[n];
             if (!/btnMsg/.test(ele.className)) {/*正常*/
                 sentM.play();
                 ele.style.opacity = 1;
                 ele.style.webkitTransform = "translate(0,0)";
                 h += ele.offsetHeight;
+
                 n++;
-                if(n>=4){
-                    oUl.style.webkitTransform = "translate(0,"+(-h)+"px)";
+                if(n>=3){
+                    oUl.style.webkitTransform = "translate(0,"+(-h-10)+"px)";
                 }
+
 
             }else{/*发送信息*/
                 clearInterval(timer);
@@ -119,11 +135,14 @@ function fnMessage(){
             }
             if(n ==eles.length ){
                 clearInterval(timer);
-                message.remove();
-                fnCube();
+                window.setTimeout(function(){
+                    message.remove();
+                    fnCube();
+                },2000);
+
             }
 
-        },1000)
+        },2000)
     }
     var text1 = document.querySelector(".text1");
     var btnSend = document.querySelector(".btnSend");
@@ -150,6 +169,7 @@ function fnMessage(){
         info = info.split("");
         var strNum = 0;
         strTimer = window.setInterval(function(){
+            sentM.currentTime = 0;
             text1.style.display ="block";
             text1.innerHTML+=info[strNum];
             strNum++;
@@ -164,8 +184,8 @@ function fnMessage(){
                     ele.style.webkitTransform = "translate(0,0)";
                     h+=ele.offsetHeight;
                     var index = $(ele).index();
-                    if(index>=4){
-                        oUl.style.webkitTransform = "translate(0,"+(-h)+"px)";
+                    if(index>=3){
+                        oUl.style.webkitTransform = "translate(0,"+(-h-10)+"px)";
                     }
                     btnSend.className = "btnSend";
                     btnSend.removeEventListener("touchstart",arguments.callee,false);
@@ -176,9 +196,9 @@ function fnMessage(){
 
     }
 
-
-
 }
+
+
 
 
 function fnCube() {
@@ -202,28 +222,33 @@ function fnCube() {
         var bBtn = true;
 
         function init() {
-            $cubeBox.css('transform', 'scale(0.5) rotateX(' + startX + 'deg) rotateY(' + startY + 'deg)');
-            $cubeBox.css('transition', '1s');
-            $cubeBox.on('transitionEnd webkitTransitionEnd', function () {
-                $cubeBox.css('transition', '');
-            });
+            window.setTimeout(function(){
+                $cubeBox.css('transform', 'scale(0.5) rotateX(' + startX + 'deg) rotateY(' + startY + 'deg)');
+                $cubeBox.on('transitionEnd webkitTransitionEnd', function () {
+                    $cubeBox.css('transition', '');
+                });
+            },1000)
+
             bind();
         }
 
         function bind() {
 
             $(document).on('touchstart', function (ev) {
-                var touch = ev.originalEvent.changedTouches[0];
+
+                //var touch = ev.originalEvent.changedTouches[0];
+                var touch = ev.touches[0];
                 downX = touch.pageX;
                 downY = touch.pageY;
                 bBtn = true;
                 $(document).on('touchmove.move', function (ev) {
                     ev.preventDefault();
                     bBtn = false;
-                    var touch = ev.originalEvent.changedTouches[0];
+                    //var touch = ev.originalEvent.changedTouches[0];
+                    var moveTouch = ev.touches[0];
 
-                    x = (downY - touch.pageY) * step;
-                    y = (touch.pageX - downX) * step;
+                    x = (downY - moveTouch.pageY) * step;
+                    y = (moveTouch.pageX - downX) * step;
 
                     if (startX + x > 70) {
                         x = -startX + 70;
@@ -233,6 +258,7 @@ function fnCube() {
                     }
 
                     $cubeBox.css('transform', 'scale(0.5) rotateX(' + (startX + x) + 'deg) rotateY(' + (startY + y) + 'deg)');
+                    $cubeBox.css('-webkit-transform', 'scale(0.5) rotateX(' + (startX + x) + 'deg) rotateY(' + (startY + y) + 'deg)');
 
                 });
                 $(document).on('touchend.move', function () {
@@ -278,6 +304,7 @@ function fnCube() {
                 $details.hide();
                 [].forEach.call(slides, function (item) {
                     item.firstElementChild.id = "";
+                    fnNav().close();
                 });
             });
         }
@@ -286,11 +313,14 @@ function fnCube() {
             var mySwiper = new Swiper('.swiper-container', {
                 direction: 'horizontal',
                 initialSlide: index,
-                effect: "coverflow",
+                //effect: "slide",
+                effext:"coverflow",
                 onSlideChangeStart: function (swiper) {
                     var curIn = swiper.activeIndex;
-                    var sildes = swiper.slides;
-                    [].forEach.call(sildes, function (item, index) {
+                    var slides = swiper.slides;
+                    console.log(curIn);
+                    [].forEach.call(slides, function (item, index) {
+
                         item.firstElementChild.id = "";
                         fnNav().close();
                         if (index == curIn) {
