@@ -36,8 +36,8 @@ ul {
     margin-top: -1.1rem;
     background: url(../img/loading_monster.png) no-repeat;
     background-size: 2.5rem 15.64rem;
-    -webkit-animation: loading-monster-anim 1s steps(1) infinite both;
-    animation: loading-monster-anim 1s steps(1) infinite both;
+    /*-webkit-animation: loading-monster-anim 1s steps(1) infinite both;*/
+    /*animation: loading-monster-anim 1s steps(1) infinite both;*/
     z-index: 5;
 
 }
