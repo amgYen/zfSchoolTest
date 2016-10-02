@@ -15,7 +15,7 @@ var sentM = document.querySelector("#sentM");
 var fileList = ['cubeImg1.png', 'cubeImg2.png', 'cubeImg3.png', 'cubeImg4.png', 'cubeImg5.png', 'cubeImg6.png', 'date.png', 'unlock.png', 'weixin_msg.png', 'unlock_bg.jpg',  'user_headimg.png', 'icon_input.png', 'weichat.png',  'keyboard.png'];
 for (var i = 0; i < fileList.length; i++) {
     var filed = fileList[i];
-   //loadImg(filed,i);
+  loadImg(filed,i);
 }
 var j = 0, num = null, loadtimer;
 function loadImg(oImg, i) {
@@ -204,7 +204,6 @@ function fnMessage(){
 }
 
 
-fnCube();
 
 function fnCube() {
     var $cube = $("#cube");
