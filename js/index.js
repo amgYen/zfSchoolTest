@@ -15,7 +15,7 @@ var sentM = document.querySelector("#sentM");
 var fileList = ['cubeImg1.png', 'cubeImg2.png', 'cubeImg3.png', 'cubeImg4.png', 'cubeImg5.png', 'cubeImg6.png', 'date.png', 'unlock.png', 'weixin_msg.png', 'unlock_bg.jpg',  'user_headimg.png', 'icon_input.png', 'weichat.png',  'keyboard.png'];
 for (var i = 0; i < fileList.length; i++) {
     var filed = fileList[i];
-  loadImg(filed,i);
+    loadImg(filed,i);
 }
 var j = 0, num = null, loadtimer;
 function loadImg(oImg, i) {
@@ -274,7 +274,7 @@ function fnCube() {
                 if (bBtn) {  //点击
                     if(e.target.tagName.toLowerCase() =="li"){
                         $cube.hide();
-                        $details.show();
+                        //$details.show();
                         details.init($(e.target).index());
                     }
 
@@ -295,20 +295,24 @@ function fnCube() {
     var details = (function (index) {
         function init(index) {
             var slides = document.querySelectorAll("#detailsList   .swiper-slide");
-            [].forEach.call(slides, function (item) {
-                item.firstElementChild.id = "";
-            });
-            window.setTimeout(function(){
-                slides[index].firstElementChild.id = "n" + index;
-                if(index==0){
-                    fnNav().open();
-                }
-            },200);
+            //[].forEach.call(slides, function (item) {
+            //    item.firstElementChild.id = "";
+            //});
+            ////window.setTimeout(function(){
+            //    $details.show();
+            //    slides[index].firstElementChild.id = "n" + index;
+            //    if(index==0){
+            //        fnNav().open();
+            //    }
+            //
+
+            //},200);
             bind(index);
 
             $detailsReturn.on('touchstart', function () {
                 [].forEach.call(slides, function (item) {
                     item.firstElementChild.id = "";
+                    slides[index].style.zIndex = 0;
                     fnNav().close();
                 });
                 $cube.show();
@@ -318,15 +322,18 @@ function fnCube() {
         }
 
         function bind(index) {
+            $details.show();
+            if(index==0){
+                        fnNav().open();
+            }
             var mySwiper = new Swiper('.swiper-container', {
                 direction: 'horizontal',
                 initialSlide: index,
                 //effect: "slide",
-                effext:"coverflow",
+                effect:"coverflow",
                 onSlideChangeStart: function (swiper) {
                     var curIn = swiper.activeIndex;
                     var slides = swiper.slides;
-                    console.log(curIn);
                     [].forEach.call(slides, function (item, index) {
 
                         item.firstElementChild.id = "";
@@ -341,7 +348,9 @@ function fnCube() {
                     })
                 }
 
-            })
+            });
+
+
         }
 
         return {
