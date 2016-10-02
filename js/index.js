@@ -15,7 +15,7 @@ var sentM = document.querySelector("#sentM");
 var fileList = ['cubeImg1.png', 'cubeImg2.png', 'cubeImg3.png', 'cubeImg4.png', 'cubeImg5.png', 'cubeImg6.png', 'date.png', 'unlock.png', 'weixin_msg.png', 'unlock_bg.jpg',  'user_headimg.png', 'icon_input.png', 'weichat.png',  'keyboard.png'];
 for (var i = 0; i < fileList.length; i++) {
     var filed = fileList[i];
-   loadImg(filed,i);
+   //loadImg(filed,i);
 }
 var j = 0, num = null, loadtimer;
 function loadImg(oImg, i) {
@@ -27,11 +27,15 @@ function loadImg(oImg, i) {
             num = Math.round(j / fileList.length * 100);
             $(".percent").html(num + "%");
             if (j == fileList.length) {
-                chatM.play();
+
                 window.setTimeout(function () {
                     $("#loading").remove();
-                    fnUnlockTip();
-                    fnLock();
+                    chatM.play();
+                    window.setTimeout(function(){
+                        fnUnlockTip();
+                        fnLock();
+                    },500)
+
                 }, 1000)
 
             }
@@ -200,7 +204,7 @@ function fnMessage(){
 }
 
 
-
+fnCube();
 
 function fnCube() {
     var $cube = $("#cube");
@@ -267,11 +271,14 @@ function fnCube() {
                 });
             });
 
-            $li.on('touchend', function () {
+            $(document).on('touchend', function (e) {
                 if (bBtn) {  //点击
-                    $cube.hide();
-                    $details.show();
-                    details.init($(this).index());
+                    if(e.target.tagName.toLowerCase() =="li"){
+                        $cube.hide();
+                        $details.show();
+                        details.init($(e.target).index());
+                    }
+
                 }
                 else {  //拖拽
                     startX += x;
@@ -301,12 +308,13 @@ function fnCube() {
             bind(index);
 
             $detailsReturn.on('touchstart', function () {
-                $cube.show();
-                $details.hide();
                 [].forEach.call(slides, function (item) {
                     item.firstElementChild.id = "";
                     fnNav().close();
                 });
+                $cube.show();
+                $details.hide();
+
             });
         }
 
