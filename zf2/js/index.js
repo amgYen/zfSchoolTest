@@ -6,6 +6,10 @@
     var scale = winW / desW;
     document.documentElement.style.fontSize = scale * 100 + "px";
 })(414);
+window.setTimeout(function(){
+    var e = document.querySelector(".e1");
+    e.id ="e1";
+},1000)
 var mySwiper = new Swiper("#wrapper",{
     direction: 'vertical',
     initialSlide: 0,
